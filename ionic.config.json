@@ -1,0 +1,7 @@
+{
+  "name": "foodbase",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue"
+}
