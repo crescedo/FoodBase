@@ -99,3 +99,11 @@ table UserFavourite {
   RecipeId int [ref: > Recipe.RecipeId]
   
 }
+table Step 
+{
+    StepId int [pk, increment]
+    StepNumber int 
+    Image string 
+    Instruction string 
+    RecipeId int [ref: > Recipe.RecipeId] // references the Recipe that the Step belongs to
+}
