@@ -1,5 +1,7 @@
 Features:
 - Recipe creation: Users should be able to create new recipes by providing a title, ingredients, instructions, and any additional information such as cooking time and serving size.
+- Image upload: Users should be able to upload images of the finished dish to accompany their recipes, making it easier for others to see what the dish should look like.
+- Nutritional information: Users should be able to add nutritional information, such as calories, fat, protein, and carbohydrates, to each recipe to help others make informed decisions about what to eat.
 - Grocery basket: The users shoud be able to add the ingredients needed for a recipe into a "grocery basket", so they know what to buy for the recipe. This basket should be built like  a "Todo" list.
 - Recipe storage: The app should store the recipes created by users, so they can be easily accessed later.
 - Recipe categorization: Users should be able to categorize their recipes into categories, such as breakfast, lunch, dinner, or dessert, to help others quickly find recipes that meet their needs.
