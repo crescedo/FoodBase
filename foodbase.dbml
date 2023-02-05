@@ -1,3 +1,8 @@
+
+//how to use:
+//goto dbdiagram.io
+//copy and paste this code in the editor
+
 // The User table contains information about registered users
 table User {
   UserId int [pk]
