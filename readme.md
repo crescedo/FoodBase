@@ -9,4 +9,7 @@ Features:
 - Recipe editing: Users should be able to edit their recipes, so they can make changes to ingredients, instructions, or any other information.
 - Recipe ratings and reviews: Users should be able to rate and review recipes, which can help other users determine which recipes are worth trying.
 - User account management: Users should be able to create an account, log in, and manage their recipes, ratings, and reviews.
-- Responsive design: The app should have a responsive design that works well on different devices and screen sizes, including desktop, tablet, and mobile devices.
+- Favorites storage: Users should be able to bookmark their favorites recipes, so that their favorites recipes can be displayed in a "Favorites" tab
+- Followers: users should be able to follow and be followed by other users.
+- Cook rating: users should be able to "thumb up" other cooks. The "thumbs up" or "thumbs down" count will determine a cooks "chefs hat" rating (e.g. 3 hats of 5) 
+- Responsive design: The app should have a responsive design that works well on different devices and screen sizes, including desktop, tablet, and mobile devices. The focus should be on Moblie first for this project
