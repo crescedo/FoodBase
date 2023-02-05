@@ -1,0 +1,101 @@
+// The User table contains information about registered users
+table User {
+  UserId int [pk]
+  UserName string
+  Email string
+  CreatedAt datetime
+}
+
+// The Recipe table contains information about the recipes
+table Recipe {
+  RecipeId int [pk]
+  Title string
+  Ingredients string
+  Preparation string
+  ServingSize int
+  CookingTime int
+  TotalCalories float
+  TotalFat float
+  TotalProtein float
+  TotalCarbs float
+  ImageUrl string
+  CreatedAt datetime
+  UserId int [ref: > User.UserId]
+}
+
+// The Ingredient table contains information about the ingredients
+table Ingredient {
+  IngredientId int [pk]
+  Name string
+  ServingSize int
+  ServingUnit string
+  TotalCalories float
+  TotalFat float
+  TotalProtein float
+  TotalCarbs float
+}
+
+// The RecipeIngredient table connects recipes and ingredients
+table RecipeIngredient {
+  RecipeIngredientId int [pk]
+  RecipeId int [ref: > Recipe.RecipeId]
+  IngredientId int [ref: > Ingredient.IngredientId]
+  Quantity float
+}
+
+// The RecipeCategory table contains information about the categories of the recipes
+table RecipeCategory {
+  RecipeCategoryId int [pk]
+  Name string
+}
+
+// The RecipeCategoryAssignment table connects recipes and categories
+table RecipeCategoryAssignment {
+  RecipeCategoryAssignmentId int [pk]
+  RecipeId int [ref: > Recipe.RecipeId]
+  RecipeCategoryId int [ref: > RecipeCategory.RecipeCategoryId]
+}
+
+// The RecipeKeyword table contains information about the keywords of the recipes
+table RecipeKeyword {
+  RecipeKeywordId int [pk]
+  Name string
+}
+
+// The RecipeKeywordAssignment table connects recipes and keywords
+table RecipeKeywordAssignment {
+  RecipeKeywordAssignmentId int [pk]
+  RecipeId int [ref: > Recipe.RecipeId]
+  RecipeKeywordId int [ref: > RecipeKeyword.RecipeKeywordId]
+}
+
+// The RecipeRating table contains information about the ratings of the recipes
+table RecipeRating {
+  RecipeRatingId int [pk]
+  RecipeId int [ref: > Recipe.RecipeId]
+  UserId int [ref: > User.UserId]
+  Rating float
+}
+
+// The RecipeReview table contains information about the reviews of the recipes
+table RecipeReview {
+  RecipeReviewId int [pk]
+  RecipeId int [ref: > Recipe.RecipeId]
+  UserId int [ref: > User.UserId]
+  Comment string
+}
+
+// The UserFollow table connects users who follow each other
+table UserFollow {
+  UserFollowId int [pk]
+  UserId int [ref: > User.UserId]
+  FollowedUserId int [ref: > User.UserId]
+}
+
+// The UserFavourite table connects users and their favourite recipes
+table UserFavourite {
+  UserFavouriteId int [pk]
+  UserId int [ref: > User.UserId]
+  RecipeId int [ref: > Recipe.RecipeId]
+  
+}
