@@ -1,8 +1,8 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'ionic.foodbase',
-  appName: 'foodbase',
+  appId: 'io.ionic.starter',
+  appName: 'frontend',
   webDir: 'dist',
   bundledWebRuntime: false
 };
