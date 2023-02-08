@@ -13,14 +13,27 @@
         </ion-toolbar>
       </ion-header>
 
-<ion-list>
-      <ion-grid>
-        <ion-row>
-          <ion-col></ion-col>
-        </ion-row>
-      </ion-grid>
-</ion-list>
-      
+      <ion-list>
+        <ion-item>
+          <ion-label>Profilbild</ion-label>
+        </ion-item>
+      </ion-list>
+
+      <ion-list>
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-img
+                style="width: 80px; height: 80 px"
+                src="assets/Pictures/UserPhoto.jpeg"
+                alt="UserPhoto"
+              >
+              </ion-img>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-list>
+
       <ion-list>
         <ion-item>
           <ion-label>Benutzerdaten</ion-label>
@@ -33,7 +46,7 @@
         </ion-row>
         <ion-row>
           <ion-col>E-Mailadresse:</ion-col>
-          <ion-col>var mailadress</ion-col>
+          <ion-col>Var Mailadress</ion-col>
         </ion-row>
       </ion-grid>
 
