@@ -13,6 +13,14 @@
         </ion-toolbar>
       </ion-header>
 
+<ion-list>
+      <ion-grid>
+        <ion-row>
+          <ion-col></ion-col>
+        </ion-row>
+      </ion-grid>
+</ion-list>
+      
       <ion-list>
         <ion-item>
           <ion-label>Benutzerdaten</ion-label>
@@ -20,7 +28,7 @@
       </ion-list>
       <ion-grid>
         <ion-row>
-          <ion-col>Benutername:</ion-col>
+          <ion-col>Benutzername:</ion-col>
           <ion-col>Var username</ion-col>
         </ion-row>
         <ion-row>
