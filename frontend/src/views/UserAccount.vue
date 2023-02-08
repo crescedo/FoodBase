@@ -17,15 +17,24 @@
         <ion-item>
           <ion-label>Benutzerdaten</ion-label>
         </ion-item>
+      </ion-list>
+      <ion-grid>
+        <ion-row>
+          <ion-col>Benutername:</ion-col>
+          <ion-col>Var username</ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>E-Mailadresse:</ion-col>
+          <ion-col>var mailadress</ion-col>
+        </ion-row>
+      </ion-grid>
+
+      <ion-list>
         <ion-item>
-          <ion-label>Benutzername: VarUsername</ion-label>
-        </ion-item>
-        <ion-item>
-          <ion-label>E-Mailadresse: VarMail</ion-label>
+          <ion-label>Funktionen</ion-label>
         </ion-item>
       </ion-list>
-
-      <ion-button size="small" >Benutzerdaten ändern</ion-button>
+      <ion-button size="small">Benutzerdaten ändern</ion-button>
       <ion-button size="small">Passwort zurücksetzen</ion-button>
       <ion-button size="small">Konto löschen</ion-button>
     </ion-content>
