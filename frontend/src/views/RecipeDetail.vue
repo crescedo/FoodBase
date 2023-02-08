@@ -79,11 +79,13 @@
           </ion-col>
         </ion-row>
       </ion-grid>
-      <ion-col>
-              <ion-button size="small">Rezept speichern</ion-button>
-            </ion-col>
-
-
+      <ion-button
+        class="ion-margin-top"
+        expand="block"
+        v-bind:router-link="cookingBook"
+        color="danger"
+        >zurück zur Übersicht
+      </ion-button>
     </ion-content>
   </ion-page>
 </template>
@@ -97,9 +99,12 @@ import {
   IonCol,
   IonGrid,
   IonRow,
-  IonButton
+  IonButton,
 } from "@ionic/vue";
 import { defineComponent } from "vue";
+import { searchCircle } from "ionicons/icons";
+
+const cookingBook = "/tabs/cookingbook";
 </script>
 <style scoped>
 </style>

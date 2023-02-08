@@ -32,7 +32,7 @@
         </ion-row>
       </ion-grid>
       <!-- ion-grid v-for""" -->
-      <ion-grid >
+      <ion-grid v-bind:router-link="viewRecipe">
         <ion-row>
           <ion-col>
             <ion-img src="assets/Pictures/Repezt1.jpg" alt="FoodBase"></ion-img>
@@ -59,8 +59,12 @@
   <script setup lang="ts">
 import { IonButton, IonIcon } from "@ionic/vue";
 import { heart, time, barbell, filter } from "ionicons/icons";
+import { defineComponent } from "vue";
+import { searchCircle } from "ionicons/icons";
 
 const filterPath ="/tabs/filterrecipe"
+
+const viewRecipe ="/tabs/recipeDetail"
 </script>
 
   

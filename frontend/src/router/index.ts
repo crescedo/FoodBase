@@ -48,6 +48,11 @@ const routes: Array<RouteRecordRaw> = [
         path: 'filterrecipe',
         component: () => import('@/views/FilterRecipe.vue')
       }
+      ,
+      {
+        path: 'recipeDetail',
+        component: () => import('@/views/RecipeDetail.vue')
+      }
     ]
   }
 ]
