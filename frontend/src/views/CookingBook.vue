@@ -6,6 +6,7 @@
           ><ion-icon :icon="book"></ion-icon> Kochbuch
           <ion-icon :icon="book"></ion-icon
         ></ion-title>
+        <ion-icon name="add-circle-outline"></ion-icon>
       </ion-toolbar>
     </ion-header>
     <ion-content :fullscreen="true">
@@ -54,7 +55,7 @@
 </template>
   
   <script setup lang="ts">
-import { book, time, barbell, filter } from "ionicons/icons";
+import { book, time, barbell, filter, addCircleOutline } from "ionicons/icons";
 import {
   IonIcon,
   IonSearchbar,
