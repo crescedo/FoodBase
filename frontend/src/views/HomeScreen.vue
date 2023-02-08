@@ -31,7 +31,7 @@
           <br />
           <ion-col
             ><ion-img
-              src="../Pictures/FoodBase.jpg"
+              src="assets/Pictures/FoodBase.jpg"
               alt="FoodBase"
             ></ion-img
           ></ion-col>
