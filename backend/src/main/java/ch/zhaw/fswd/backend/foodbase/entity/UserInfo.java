@@ -14,5 +14,6 @@ public class UserInfo {
     private Long id;
     private String firstName;
     private String lastName;
+    private Image profilePic;
 
 }
