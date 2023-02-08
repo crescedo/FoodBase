@@ -31,13 +31,15 @@ public class User {
     @Cascade(CascadeType.ALL)
     @OneToOne
     private LoginInfo loginInfo; // login Informationen
+
     @Cascade(CascadeType.ALL)
     @OneToMany(fetch = FetchType.EAGER)
     private List<Recipe> favorites; // eine Liste, wo alle favoriten gespeichert werden
+    
     @Cascade(CascadeType.ALL)
     @OneToMany(fetch = FetchType.EAGER)
     private List<Cooking> cookings; // alle Rezepte die gekocht werden
-    
+
     /*
      * @OneToMany
      * List<User> followers; //alle users, die ein User folgt
