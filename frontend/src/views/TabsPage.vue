@@ -10,7 +10,7 @@
           </ion-tab-button>
           <ion-tab-button tab="tab2" href="/tabs/myfavorites">
             <ion-icon :icon="heart" />
-            <ion-label>Meine Favoriten</ion-label>
+            <ion-label>Favoriten</ion-label>
           </ion-tab-button>
           <ion-tab-button tab="tab3" href="/tabs/cookingbook">
             <ion-icon :icon="book" />

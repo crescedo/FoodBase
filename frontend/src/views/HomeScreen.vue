@@ -1,26 +1,78 @@
 <template>
-    <ion-page>
-      <ion-header :translucent="true">
+  <ion-page>
+
+    <ion-content :fullscreen="true">
+      <ion-header collapse="condense">
         <ion-toolbar>
-          <ion-title>TaskList</ion-title>
+          <ion-title size="large">Blank</ion-title>
         </ion-toolbar>
       </ion-header>
-  
-      <ion-content :fullscreen="true">
-        <ion-header collapse="condense">
-          <ion-toolbar>
-            <ion-title size="large">Blank</ion-title>
-          </ion-toolbar>
-        </ion-header>
-  
-  
-        </ion-content>
-    </ion-page>
-  </template>
+      <ion-grid>
+        <ion-row>
+          <ion-col></ion-col>
+        </ion-row>
+      </ion-grid>
+      <ion-grid>
+        <ion-row>
+          <ion-col size-xl="3">
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+          Willkommen bei FoodBase
+          <br />
+        </ion-col>
+        </ion-row>
+      </ion-grid>
+      <ion-grid>
+        <ion-row>
+          <br />
+          <br />
+          <ion-col
+            ><ion-img
+              src="assets/Pictures/FoodBase.jpg"
+              alt="FoodBase"
+            ></ion-img
+          ></ion-col>
+          <br />
+          <br />
+        </ion-row>
+      </ion-grid>
+      <ion-grid>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <ion-row>
+          <ion-col>
+            <ion-searchbar :search-icon="searchCircle" placeholder="Rezept suchen"></ion-searchbar>
+          </ion-col>
+        </ion-row>
+        <br />
+        <br />
+      </ion-grid>
+    </ion-content>
+  </ion-page>
+</template>
   
   <script setup lang="ts">
-   </script>
+import { IonSearchbar, IonImg, IonCol, IonGrid, IonRow } from "@ionic/vue";
+import { defineComponent } from "vue";
+import { searchCircle } from 'ionicons/icons';
+</script>
   
   <style scoped>
- 
-  </style>
+    
+ion-col {
+  text-align: center;
+
+}
+</style>
