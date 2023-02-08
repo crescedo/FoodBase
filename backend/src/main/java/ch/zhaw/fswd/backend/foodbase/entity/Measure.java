@@ -1,6 +1,5 @@
-package ch.zhaw.fswd.backend.foodbase.entities;
+package ch.zhaw.fswd.backend.foodbase.entity;
 
-import java.time.LocalDateTime;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -9,12 +8,10 @@ import lombok.Data;
 
 @Entity
 @Data
-public class Trip {
+public class Measure {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    private LocalDateTime departure;
-    private LocalDateTime arrival;
-
+    private String valueLong;
+    private String valueShort;
 }
