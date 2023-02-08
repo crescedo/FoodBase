@@ -45,6 +45,14 @@
       </ion-list>
       <ion-grid>
         <ion-row>
+          <ion-col>Vorname:</ion-col>
+          <ion-col>Var Vorname</ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>Nachname:</ion-col>
+          <ion-col>Var Nachname</ion-col>
+        </ion-row>
+        <ion-row>
           <ion-col>Benutzername:</ion-col>
           <ion-col>Var username</ion-col>
         </ion-row>

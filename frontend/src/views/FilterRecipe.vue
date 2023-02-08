@@ -2,9 +2,6 @@
   <ion-page>
     <ion-header :translucent="true">
       <ion-toolbar>
-        <ion-buttons slot="start">
-          <ion-back-button></ion-back-button>
-        </ion-buttons>
         <ion-title>Filter</ion-title>
       </ion-toolbar>
     </ion-header>
@@ -35,10 +32,32 @@
         <ion-checkbox slot="start"></ion-checkbox>
         <ion-label>Hauptgericht</ion-label>
       </ion-item>
-<ion-item>
+      <ion-item>
         <ion-checkbox slot="start"></ion-checkbox>
         <ion-label>Dessert</ion-label>
       </ion-item>
+
+      <ion-item>
+        <ion-label>Zubereitungszeit</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-checkbox slot="start"></ion-checkbox>
+        <ion-label>weniger als 15 min</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-checkbox slot="start"></ion-checkbox>
+        <ion-label>weniger als 30 min</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-checkbox slot="start"></ion-checkbox>
+        <ion-label>weniger als 45 min</ion-label>
+      </ion-item>
+
+
+      <ion-button class="ion-margin-top" 
+      expand="block" v-bind:router-link="backToFavorites" 
+      color="danger">Filter anwenden
+      </ion-button>
 
     </ion-content>
   </ion-page>
@@ -46,6 +65,7 @@
 
 <script setup lang="ts">
 import {
+  IonButton,
   IonBackButton,
   IonList,
   IonItem,
@@ -58,17 +78,19 @@ import {
   IonTitle,
   IonToolbar,
 } from "@ionic/vue";
+
+const backToFavorites ="/tabs/myfavorites"
 </script>
 
   <style scoped>
-  ion-checkbox {
-    --size: 25px;
-    --background-checked: #eb445a;
-  }
-  
-  ion-checkbox::part(container) {
-    border-radius: 6px;
-    border: 2px solid #eb445a;
-  }
+ion-checkbox {
+  --size: 25px;
+  --background-checked: #eb445a;
+}
+
+ion-checkbox::part(container) {
+  border-radius: 6px;
+  border: 2px solid #eb445a;
+}
 </style>
 
