@@ -1,36 +1,48 @@
 import { createRouter, createWebHistory } from '@ionic/vue-router';
 import { RouteRecordRaw } from 'vue-router';
-import Tabs from '../views/Tabs.vue'
-import Login from '../views/Login.vue'
+import CookingBook from '../views/CookingBook.vue'
+import HomeScreen from '../views/HomeScreen.vue'
+import LoginScreen from '../views/LoginScreen.vue'
+import MyFavorites from '../views/MyFavorites.vue'
+import TabsPage from '../views/TabsPage.vue'
+import UserAccount from '../views/UserAccount.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    redirect: '/login'
+    redirect: '/tabs/homescreen'
   },
-  {
-    path: '/login',
-    component: Login,
-  },
+
   {
     path: '/tabs/',
-    component: Tabs,
+    component: TabsPage,
+
     children: [
       {
         path: '',
-        redirect: '/tabs/tab1'
+        redirect: '/tabs/homescreen'
       },
       {
-        path: 'todo',
-        component: () => import('@/views/Todo.vue')
+        path: 'homescreen',
+        component: () => import('@/views/HomeScreen.vue')
       },
       {
-        path: 'projects',
-        component: () => import('@/views/Projects.vue')
+        path: 'myfavorites',
+        component: () => import('@/views/MyFavorites.vue')
       },
       {
-        path: 'timerecord',
-        component: () => import('@/views/Timerecord.vue')
+        path: 'cookingbook',
+        component: () => import('@/views/CookingBook.vue')
+      }
+      ,
+      {
+        path: 'useraccount',
+        component: () => import('@/views/UserAccount.vue')
+      }
+      ,
+      {
+        path: 'loginscreen',
+        component: () => import('@/views/LoginScreen.vue')
       }
     ]
   }
