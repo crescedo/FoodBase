@@ -93,13 +93,13 @@
 <script setup lang="ts">
 import { time, barbell, filter } from "ionicons/icons";
 import {
-  IonIcon,
+    IonIcon,
   IonSearchbar,
   IonImg,
   IonCol,
   IonGrid,
   IonRow,
-  IonButton,
+  IonButton, IonTitle, IonToolbar, IonBackButton, IonPage, IonButtons, IonHeader, IonLabel, IonItem, IonList, IonContent
 } from "@ionic/vue";
 import { defineComponent } from "vue";
 import { searchCircle } from "ionicons/icons";
