@@ -22,7 +22,6 @@ public class IngredientQuantity {
 
     @OneToOne
     private Ingredient ingredient;
+
     
-    @OneToOne
-    private Measure measure;
 }

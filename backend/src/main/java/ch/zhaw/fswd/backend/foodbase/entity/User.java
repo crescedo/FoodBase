@@ -1,6 +1,5 @@
 package ch.zhaw.fswd.backend.foodbase.entity;
 
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -12,25 +11,29 @@ import lombok.Data;
 import java.util.List;
 
 @Entity
-@Table(name="UserTable")
+@Table(name = "UserTable")
 @Data
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
+
     @OneToOne
-    private UserInfo userInfo;
-    
-    private String biographyShort;
-    
+    private UserInfo userInfo;// basisinformationen aller user
+
+    // private String biographyShort;
+
     @OneToOne
-    private LoginInfo accountInfo;
+    private LoginInfo loginInfo; // login Informationen
 
     @OneToMany
-    private List<Recipe> favorites;
+    private List<Recipe> favorites; // eine Liste, wo alle favoriten gespeichert werden
 
     @OneToMany
-    private List<Cooking> cookings;
+    private List<Cooking> cookings; // alle Rezepte die gekocht werden
     
+    /*
+     * @OneToMany
+     * List<User> followers; //alle users, die ein User folgt
+     */
 }

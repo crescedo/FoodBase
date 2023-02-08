@@ -9,7 +9,6 @@ import lombok.Data;
 import java.util.List;
 import jakarta.persistence.Table;
 @Entity
-//@Table(name="StepsTable")
 @Data
 public class Step {
     @Id
@@ -23,5 +22,5 @@ public class Step {
     @OneToMany
     private List<Image> images;  
     
-    private Long order;
+    private Integer stepOrder;
 }

@@ -23,14 +23,14 @@ public class Recipe {
 
     @ManyToOne
     private User createdBy;
-    /*
-     * @OneToMany
-     * private List<Step> cookingSteps;
-     */
+
+    @OneToMany
+    private List<Step> cookingSteps;
+
     @OneToMany
     private List<IngredientQuantity> ingredients;
 
-    // private List<String> keyWords;
+    private List<String> keyWords;
 
     @OneToOne
     private Image thumbnailUrl; // Link zu einem Bild der als thumbnail verwendet wird
@@ -40,7 +40,7 @@ public class Recipe {
 
     private Integer difficulty; // difficulty as 3/5 chef hats
 
-    private Double cookingTime;
+    private Double cookingTime; //Kochzeit des Rezepts
 
-    private Integer servings;
+    private Integer servings; //für wieviele ist das Rezept gedacht
 }
