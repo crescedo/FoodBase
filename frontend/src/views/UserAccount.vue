@@ -30,6 +30,10 @@
               >
               </ion-img>
             </ion-col>
+            <ion-col>
+              <ion-button size="small">Foto aufnehmen</ion-button>
+             <ion-button size="small">Foto auswählen</ion-button>
+            </ion-col>
           </ion-row>
         </ion-grid>
       </ion-list>
@@ -55,9 +59,9 @@
           <ion-label>Funktionen</ion-label>
         </ion-item>
       </ion-list>
-      <ion-button size="small">Benutzerdaten ändern</ion-button>
-      <ion-button size="small">Passwort zurücksetzen</ion-button>
-      <ion-button size="small">Konto löschen</ion-button>
+      <ion-button class="ion-padding-start" size="small">Benutzerdaten ändern</ion-button>
+      <ion-button class="ion-padding-start" size="small">Passwort zurücksetzen</ion-button>
+      <ion-button class="ion-padding-start" size="small">Konto löschen</ion-button>
     </ion-content>
   </ion-page>
 </template>
