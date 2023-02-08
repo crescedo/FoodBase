@@ -43,6 +43,10 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: 'loginscreen',
         component: () => import('@/views/LoginScreen.vue')
+      },
+      {
+        path: 'filterrecipe',
+        component: () => import('@/views/FilterRecipe.vue')
       }
     ]
   }
