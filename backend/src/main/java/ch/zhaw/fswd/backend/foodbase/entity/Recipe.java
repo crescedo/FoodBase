@@ -11,7 +11,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import lombok.Data;
-
+import java.time.Duration;
 @Entity
 @Data
 public class Recipe {
@@ -40,7 +40,7 @@ public class Recipe {
 
     private Integer difficulty; // difficulty as 3/5 chef hats
 
-    private Double cookingTime; //Kochzeit des Rezepts
+    private Duration cookingTime; //Kochzeit des Rezepts
 
     private Integer servings; //für wieviele ist das Rezept gedacht
 }
