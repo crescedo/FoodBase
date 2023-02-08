@@ -15,54 +15,46 @@
         </ion-toolbar>
       </ion-header>
       <ion-grid>
-    <ion-row>
-      <ion-col>
-        <ion-img>
-          src="assets/Pictures/Rezept1.jpg"
-          alt="FoodBase"
-        </ion-img>
-    </ion-col>
-    </ion-row>
-  </ion-grid>
-  <ion-grid>
-    <ion-row>
-      <ion-col>
-        Älplermagarone
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-  <ion-grid>
-    <ion-row>
-      <ion-col>
-        <ion-icon :icon="time" />
-        30 Min
-      </ion-col>
-      <ion-col>
-
-        <ion-icon :icon="barbell" />
-        
-        
-        
-        einfach </ion-col>
-    </ion-row>
-  </ion-grid>
-
-
-
-
-
-      
-
-
-
-
+        <ion-row>
+          <ion-col size="9">
+            <ion-searchbar
+              :search-icon="searchCircle"
+              placeholder="Rezept suchen"
+            ></ion-searchbar>
+          </ion-col>
+          <ion-col class="ion-padding">
+            <div><ion-icon :icon="filter" /></div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <!-- ion-grid v-for""" -->
+      <ion-grid >
+        <ion-row>
+          <ion-col>
+            <ion-img src="assets/Pictures/Repezt1.jpg" alt="FoodBase"></ion-img>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col> Älplermagarone </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-icon :icon="time" />
+            30 Min
+          </ion-col>
+          <ion-col>
+            <ion-icon :icon="barbell" />
+            einfach
+          </ion-col>
+        </ion-row>
+      </ion-grid>
     </ion-content>
   </ion-page>
 </template>
   
   <script setup lang="ts">
 import { IonIcon } from "@ionic/vue";
-import { heart, time, barbell } from "ionicons/icons";
+import { heart, time, barbell, filter } from "ionicons/icons";
 </script>
 
   

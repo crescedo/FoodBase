@@ -20,7 +20,7 @@
             <br />
             <br />
             <br />
-          Willkommen bei FoodBase
+          Willkommen bei 
           <br />
         </ion-col>
         </ion-row>
@@ -28,27 +28,18 @@
       <ion-grid>
         <ion-row>
           <br />
-          <br />
-          <ion-col
-            ><ion-img
+          <ion-col>
+            <ion-img
               src="assets/Pictures/FoodBase.jpg"
               alt="FoodBase"
-            ></ion-img
-          ></ion-col>
+            ></ion-img>
+          </ion-col>
           <br />
           <br />
         </ion-row>
       </ion-grid>
       <ion-grid>
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
+
         <br />
         <br />
         <ion-row>
