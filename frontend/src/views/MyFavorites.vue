@@ -22,8 +22,12 @@
               placeholder="Rezept suchen"
             ></ion-searchbar>
           </ion-col>
-          <ion-col class="ion-padding">
-            <div><ion-icon :icon="filter" /></div>
+          <ion-col class="ion-padding-top">
+            <div>
+              <ion-button size="small" color="danger" v-bind:router-link="filterPath">
+                <ion-icon  slot="icon-only" :icon="filter" />
+              </ion-button>
+              </div>
           </ion-col>
         </ion-row>
       </ion-grid>
@@ -53,8 +57,10 @@
 </template>
   
   <script setup lang="ts">
-import { IonIcon } from "@ionic/vue";
+import { IonButton, IonIcon } from "@ionic/vue";
 import { heart, time, barbell, filter } from "ionicons/icons";
+
+const filterPath ="/tabs/filterrecipe"
 </script>
 
   
