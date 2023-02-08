@@ -7,7 +7,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import lombok.Data;
 import java.util.List;
-import jakarta.persistence.Table;
+
 @Entity
 @Data
 public class Step {
