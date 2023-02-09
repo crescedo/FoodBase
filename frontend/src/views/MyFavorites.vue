@@ -57,16 +57,32 @@
 </template>
   
   <script setup lang="ts">
-import {   IonIcon,
+
+import { heart, time, barbell, filter } from "ionicons/icons";
+import { defineComponent } from "vue";
+import { searchCircle } from "ionicons/icons";
+
+import {
+  IonIcon,
   IonSearchbar,
   IonImg,
   IonCol,
   IonGrid,
   IonRow,
-  IonButton, IonTitle, IonToolbar, IonBackButton, IonPage} from "@ionic/vue";
-import { heart, time, barbell, filter } from "ionicons/icons";
-import { defineComponent } from "vue";
-import { searchCircle } from "ionicons/icons";
+  IonButton, 
+  IonBackButton,
+  IonList,
+  IonItem,
+  IonCheckbox,
+  IonLabel,
+  IonInput,
+  IonContent,
+  IonHeader,
+  IonPage,
+  IonTitle,
+  IonToolbar,
+  IonTabButton,
+} from "@ionic/vue";
 
 const filterPath ="/tabs/filterrecipe"
 

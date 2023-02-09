@@ -71,7 +71,19 @@ import {
   IonCol,
   IonGrid,
   IonRow,
-  IonButton
+  IonButton, 
+  IonBackButton,
+  IonList,
+  IonItem,
+  IonCheckbox,
+  IonLabel,
+  IonInput,
+  IonContent,
+  IonHeader,
+  IonPage,
+  IonTitle,
+  IonToolbar,
+  IonTabButton,
 } from "@ionic/vue";
 import { defineComponent } from "vue";
 import { searchCircle } from "ionicons/icons";

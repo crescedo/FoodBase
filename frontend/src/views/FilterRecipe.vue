@@ -2,6 +2,9 @@
   <ion-page>
     <ion-header :translucent="true">
       <ion-toolbar>
+        <ion-buttons slot="start">
+        <ion-back-button text="Anwenden" :icon="checkmark"></ion-back-button>
+      </ion-buttons>
         <ion-title>Filter</ion-title>
       </ion-toolbar>
     </ion-header>
@@ -54,16 +57,14 @@
       </ion-item>
 
 
-      <ion-button class="ion-margin-top" 
-      expand="block" v-bind:router-link="backToFavorites" 
-      color="danger">Filter anwenden
-      </ion-button>
 
     </ion-content>
   </ion-page>
 </template>
 
 <script setup lang="ts">
+import { checkmark } from "ionicons/icons";
+
 import {
   IonButton,
   IonBackButton,

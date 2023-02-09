@@ -79,14 +79,7 @@
           </ion-col>
         </ion-row>
       </ion-grid>
-      <ion-button
-        class="ion-margin-top"
-        expand="block"
-        v-bind:router-link="cookingBook"
-        color="danger"
-        >zurück zur Übersicht
-      </ion-button>
-    </ion-content>
+     </ion-content>
   </ion-page>
 </template>
 

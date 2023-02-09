@@ -86,6 +86,15 @@ import {
   IonPage,
   IonTitle,
   IonToolbar,
+  IonIcon,
+  IonSearchbar,
+  IonImg,
+  IonCol,
+  IonGrid,
+  IonRow,
+  IonBackButton,
+  IonCheckbox,
+  IonTabButton,
 } from "@ionic/vue";
 </script>
 

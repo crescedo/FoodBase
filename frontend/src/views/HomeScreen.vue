@@ -55,9 +55,31 @@
 </template>
   
   <script setup lang="ts">
-import { IonSearchbar, IonImg, IonCol, IonGrid, IonRow } from "@ionic/vue";
 import { defineComponent } from "vue";
 import { searchCircle } from 'ionicons/icons';
+
+import {
+  IonButton,
+  IonBackButton,
+  IonList,
+  IonItem,
+  IonCheckbox,
+  IonLabel,
+  IonInput,
+  IonContent,
+  IonHeader,
+  IonPage,
+  IonTitle,
+  IonToolbar,
+  IonIcon,
+  IonSearchbar,
+  IonImg,
+  IonCol,
+  IonGrid,
+  IonRow,
+  IonTabButton,
+} from "@ionic/vue";
+
 </script>
   
   <style scoped>
