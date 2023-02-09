@@ -5,7 +5,7 @@
         <ion-buttons slot="start">
           <ion-back-button></ion-back-button>
         </ion-buttons>
-        <ion-title>RezeptName</ion-title>
+        <ion-title> RezeptName</ion-title>
       </ion-toolbar>
     </ion-header>
     <ion-content :fullscreen="true">
@@ -96,6 +96,8 @@ import {
 } from "@ionic/vue";
 import { defineComponent } from "vue";
 import { searchCircle } from "ionicons/icons";
+
+
 
 const cookingBook = "/tabs/cookingbook";
 </script>
