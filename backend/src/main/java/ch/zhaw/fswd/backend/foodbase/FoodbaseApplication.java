@@ -151,6 +151,92 @@ public class FoodbaseApplication implements CommandLineRunner {
 			newRecipe.setThumbnailUrl(null);
 			recipeRepository.save(newRecipe);
 		}
+
+		
+		Recipe newRecipeJess = new Recipe();
+		
+		newRecipeJess.setCreatedBy(user);
+		
+		Long l = random.nextLong(1, 2);
+		
+		Category category = categoryRepository.findById(l).get();
+		
+		newRecipeJess.setCategory(category);
+		
+		ArrayList<Step> steps = new ArrayList<Step>();
+		
+		int maxLoop = random.nextInt(3, 10);
+		
+		StringBuilder title=new StringBuilder();
+		StringBuilder content=new StringBuilder();
+		for (int i = 0; i < maxLoop; i++) {
+			
+			int numberOfParagraphs = 3;
+			int numberOfSentences = 5;
+			
+			for (int a = 0; a < numberOfParagraphs; a++) {
+				
+				title.append(words[random.nextInt(words.length)] + " ");
+				
+				for (int b = 0; b < numberOfSentences; b++) {
+				   int wordCount = random.nextInt(7) + 3;
+	   
+				   for (int c = 0; c < wordCount; c++) {
+					  content.append(words[random.nextInt(words.length)] + " ");
+				   }
+	   
+				   content.append("\n");
+				}
+	   
+				content.append("\n");
+			 }
+
+			Step step = new Step();
+
+			step.setStepOrder(i + 1);
+			
+			step.setTitle(title.toString().toUpperCase());
+			step.setContent(content.toString());
+			ArrayList<Image> images = new ArrayList<>();
+			for (int j = 0; j < 10; j++) {
+				Image image = new Image();
+				image.setUrl("https://picsum.photos/id/" + random.nextInt(1, 500) + "/200");
+				images.add(image);
+			}
+			step.setImages(images);
+			steps.add(step);
+		}
+		newRecipeJess.setCookingSteps(steps);
+
+		Duration duration = Duration.ofHours(1);
+
+		newRecipeJess.setCookingTime(duration);
+
+		newRecipeJess.setCreatedAt(LocalDateTime.now());
+
+		newRecipeJess.setDifficulty(4);
+
+		ArrayList<IngredientQuantity> ingredients = new ArrayList<IngredientQuantity>();
+
+		for (int i = 0; i < 5; i++) {
+
+			l = random.nextLong(1, 20);
+			IngredientQuantity iq = new IngredientQuantity();
+			iq.setIngredient(ingredientRepository.findById(1L).get());
+			l = random.nextLong(1, 5);
+			iq.setMeasure(measureRepository.findById(1L).get());
+			iq.setQuantity((double) Math.round(random.nextDouble(1, 50)));
+			ingredients.add(iq);
+		}
+
+		newRecipeJess.setIngredients(ingredients);
+		newRecipeJess.setServings(4);
+		Image thumbnail = new Image();
+		thumbnail.setUrl("https://picsum.photos/id/" + random.nextInt(1, 500) + "/200");
+		newRecipeJess.setThumbnailUrl(thumbnail);
+
+		recipeRepository.save(newRecipeJess);
+		
 		ObjectMapper mapper = new ObjectMapper();
 		String jsonUser = mapper.writeValueAsString(user);
 		// String jsonRecipe = mapper.writeValueAsString(newRecipe);

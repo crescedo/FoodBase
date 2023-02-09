@@ -41,38 +41,43 @@
         </ion-row>
       </ion-grid>
       <!-- ion-grid v-for""" -->
-      <ion-grid v-bind:router-link="viewRecipe">
+      <ion-grid v-for="recipe in recipes" :key="recipe.id">
         <ion-row>
           <ion-col>
-            <ion-img src="assets/Pictures/Repezt1.jpg" alt="FoodBase"></ion-img>
+            <ion-img> {{ recipe.thumbnailUrl?.url }} </ion-img>
           </ion-col>
         </ion-row>
         <ion-row>
-          <ion-col class="boldText"> Älplermagarone </ion-col>
+          <ion-col size="9" class="boldText" v-bind:router-link="viewRecipe">             {{ recipe.title }} </ion-col>
+          <ion-col size="3" class>
+            <div>
+              <ion-button size="small" color="danger" v-bind:router-link="filterPath">
+                <ion-icon  slot="icon-only" :icon="heart" />
+              </ion-button>
+              </div>
+          </ion-col>
+
         </ion-row>
         <ion-row>
           <ion-col>
             <ion-icon :icon="time" />
+            {{ recipe.cookingTime }}
             <!-- cookingtime""" -->
             30 Min
           </ion-col>
           <ion-col>
             <ion-icon :icon="barbell" />
-            einfach
+            {{ recipe.difficulty }}
+             <!-- einfach -->
           </ion-col>
         </ion-row>
       </ion-grid>
-      <ion-list>
-        <ion-item v-for="recipe in recipes" :key="recipe.id">
-          {{ recipe.createdAt }}
-        </ion-item>
-      </ion-list>
     </ion-content>
   </ion-page>
 </template>
   
   <script setup lang="ts">
-import { book, time, barbell, filter, addCircleOutline } from "ionicons/icons";
+import { book, time, barbell, filter, addCircleOutline, heart } from "ionicons/icons";
 import {
   IonIcon,
   IonSearchbar,
