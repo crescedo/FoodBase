@@ -20,7 +20,7 @@
             <br />
             <br />
             <br />
-          Willkommen bei FoodBase
+          Willkommen bei 
           <br />
         </ion-col>
         </ion-row>
@@ -28,27 +28,18 @@
       <ion-grid>
         <ion-row>
           <br />
-          <br />
-          <ion-col
-            ><ion-img
-              src="../Pictures/FoodBase.jpg"
+          <ion-col>
+            <ion-img
+              src="assets/Pictures/FoodBase.jpg"
               alt="FoodBase"
-            ></ion-img
-          ></ion-col>
+            ></ion-img>
+          </ion-col>
           <br />
           <br />
         </ion-row>
       </ion-grid>
       <ion-grid>
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
+
         <br />
         <br />
         <ion-row>
@@ -64,9 +55,31 @@
 </template>
   
   <script setup lang="ts">
-import { IonSearchbar, IonImg, IonCol, IonGrid, IonRow } from "@ionic/vue";
 import { defineComponent } from "vue";
 import { searchCircle } from 'ionicons/icons';
+
+import {
+  IonButton,
+  IonBackButton,
+  IonList,
+  IonItem,
+  IonCheckbox,
+  IonLabel,
+  IonInput,
+  IonContent,
+  IonHeader,
+  IonPage,
+  IonTitle,
+  IonToolbar,
+  IonIcon,
+  IonSearchbar,
+  IonImg,
+  IonCol,
+  IonGrid,
+  IonRow,
+  IonTabButton,
+} from "@ionic/vue";
+
 </script>
   
   <style scoped>
