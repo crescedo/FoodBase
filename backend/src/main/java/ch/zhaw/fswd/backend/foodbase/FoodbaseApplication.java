@@ -46,7 +46,7 @@ public class FoodbaseApplication implements CommandLineRunner {
 			public void addCorsMappings(CorsRegistry registry) {
 				 registry.addMapping("/**")
 				 // This is only really relevant for development, where we have different servers for frontend and backend   
-				.allowedOrigins("http://localhost:8101")
+				.allowedOrigins("http://localhost:8100")
 				.allowedMethods("GET", "PUT", "POST", "DELETE")
 				// AllowCredentials is necessary, as it sets 'Access-Control-Allow-Credentials'.    
 				// Otherwise Angular's HttpClient will not pass the Cookie back.      
