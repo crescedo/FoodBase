@@ -26,9 +26,9 @@
         <ion-grid>
           <ion-row>
           <ion-col>
-            <ion-img src="../../assets/Pictures/Person.jpg" alt="UserPhoto" style="width: 80px; height: 80 px"></ion-img>
             <!--falls möglich das ProfilPhoto auf dem User speichern -->
             <ion-img v-if="profilPhoto" :src="profilPhoto.webviewPath" alt="UserPhoto" style="width: 80px; height: 80 px"></ion-img>         
+            <ion-img v-else src="../../assets/Pictures/Person.jpg" alt="UserPhoto" style="width: 80px; height: 80 px"></ion-img>
           </ion-col>
           <ion-col><ion-button
                 size="small"
