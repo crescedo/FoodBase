@@ -24,7 +24,7 @@
           <ion-col size="9">
             <ion-searchbar class="scolor"
               :search-icon="searchCircle"
-              placeholder="Rezept suchen"
+              placeholder="Suchen"
             ></ion-searchbar>
           </ion-col>
           <ion-col class="ion-padding-top">
