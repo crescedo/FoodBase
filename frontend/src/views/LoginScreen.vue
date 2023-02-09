@@ -4,20 +4,42 @@
       <ion-grid>
         <ion-row justify-content-center>
           <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
-            <div text-center>
-              <h1>LeanTodo login</h1>
-            </div>
+            <ion-text color="primary">
+              <h2>Willkommen bei</h2>
+            </ion-text>
+            <ion-img
+              src="assets/Pictures/FoodBase.jpg"
+              alt="FoodBase"
+            ></ion-img>
+            <ion-text color="tertiary">
+              <h3>Trete in die Welt des Kochen und Backens ein</h3>
+            </ion-text>
             <div padding>
               <ion-item>
-                <ion-input type="text" placeholder="Login Name" v-model="username"></ion-input>
+                <ion-input
+                  type="text"
+                  placeholder="Login Name"
+                  v-model="username"
+                ></ion-input>
               </ion-item>
               <ion-item>
-                <ion-input type="password" placeholder="Password" v-model="password"></ion-input>
+                <ion-input
+                  type="password"
+                  placeholder="Password"
+                  v-model="password"
+                ></ion-input>
               </ion-item>
             </div>
             <div padding>
-              <ion-button size="large" @click="login" expand="block">Login</ion-button>
+              <ion-button size="large" @click="login" expand="block"
+              v-bind:router-link="homScreenPath">Login</ion-button
+              >
             </div>
+            <ion-text> <p>Passwort vergessen?</p></ion-text>
+            <ion-text>
+              Kein Account?
+              <ion-button shape="round">Registrieren</ion-button>
+            </ion-text>
           </ion-col>
         </ion-row>
       </ion-grid>
@@ -35,9 +57,23 @@ import {
   IonGrid,
   IonButton,
   IonItem,
+  IonImg,
+  IonText,
 } from "@ionic/vue";
 import { useLogin } from "../composables/useLogin";
 
 const { username, password, login } = useLogin();
 
+const homScreenPath ="/tabs/HomeScreen"
+
 </script>
+
+<style scoped>
+
+#container {
+  text-align: center;
+
+}
+
+</style>
+

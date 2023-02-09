@@ -17,7 +17,7 @@
       </ion-header>
 
       <ion-item>
-        <ion-label>Menüart</ion-label>
+        <ion-label class="boldText">Menüart</ion-label>
       </ion-item>
       <ion-item>
         <ion-checkbox slot="start"></ion-checkbox>
@@ -33,7 +33,7 @@
       </ion-item>
       <ion-item>
         <ion-checkbox slot="start"></ion-checkbox>
-        <ion-label>Hauptgericht</ion-label>
+        <ion-label >Hauptgericht</ion-label>
       </ion-item>
       <ion-item>
         <ion-checkbox slot="start"></ion-checkbox>
@@ -41,7 +41,7 @@
       </ion-item>
 
       <ion-item>
-        <ion-label>Zubereitungszeit</ion-label>
+        <ion-label class="boldText">Zubereitungszeit </ion-label>
       </ion-item>
       <ion-item>
         <ion-checkbox slot="start"></ion-checkbox>
@@ -54,6 +54,30 @@
       <ion-item>
         <ion-checkbox slot="start"></ion-checkbox>
         <ion-label>weniger als 45 min</ion-label>
+      </ion-item>
+
+            <ion-item>
+        <ion-label class="boldText">Schwierigkeitsgrad </ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-checkbox slot="start"></ion-checkbox>
+        <ion-label>kinderleicht</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-checkbox slot="start"></ion-checkbox>
+        <ion-label>einfach</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-checkbox slot="start"></ion-checkbox>
+        <ion-label>mittel</ion-label>
+      </ion-item>
+           <ion-item>
+        <ion-checkbox slot="start"></ion-checkbox>
+        <ion-label>schwer</ion-label>
+      </ion-item>
+           <ion-item>
+        <ion-checkbox slot="start"></ion-checkbox>
+        <ion-label>fast unmöglich</ion-label>
       </ion-item>
 
 
@@ -86,12 +110,15 @@ const backToFavorites ="/tabs/myfavorites"
   <style scoped>
 ion-checkbox {
   --size: 25px;
-  --background-checked: #eb445a;
+  --background-checked: #93cbff;
 }
 
 ion-checkbox::part(container) {
   border-radius: 6px;
-  border: 2px solid #eb445a;
+  border: 2px solid #93cbff;
 }
+  .boldText{
+    font-weight: 700;
+  }
 </style>
 

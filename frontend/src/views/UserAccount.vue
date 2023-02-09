@@ -2,11 +2,14 @@
   <ion-page>
     <ion-header :translucent="true">
       <ion-toolbar>
-        <ion-title>Mein Account</ion-title>
+        <ion-title class="boldText">
+          <ion-icon :icon="person" color="medium"></ion-icon> Mein Account
+          <ion-icon :icon="person" color="medium"></ion-icon>
+        </ion-title>
       </ion-toolbar>
     </ion-header>
 
-    <ion-content :fullscreen="true">
+    <ion-content :fullscreen="true" class="bgcolor">
       <ion-header collapse="condense">
         <ion-toolbar>
           <ion-title size="large">Blank</ion-title>
@@ -15,32 +18,35 @@
 
       <ion-list>
         <ion-item>
-          <ion-label>Profilbild</ion-label>
+          <ion-label class="boldText">Profilbild</ion-label>
         </ion-item>
       </ion-list>
 
       <ion-list>
         <ion-grid>
           <ion-row>
-            <ion-col>
-              <ion-img
-                style="width: 80px; height: 80 px"
-                src="assets/Pictures/UserPhoto.jpeg"
-                alt="UserPhoto"
+          <ion-col>
+            <!--falls möglich das ProfilPhoto auf dem User speichern -->
+            <ion-img v-if="profilPhoto" :src="profilPhoto.webviewPath" alt="UserPhoto" style="width: 80px; height: 80 px"></ion-img>         
+            <ion-img v-else src="../../assets/Pictures/Person.jpg" alt="UserPhoto" style="width: 80px; height: 80 px"></ion-img>
+          </ion-col>
+          <ion-col><ion-button
+                size="small"
+                color="medium"
+                class="ion-padding-end"
+                @click="takePhoto()"
+                >Foto aufnehmen</ion-button
               >
-              </ion-img>
-            </ion-col>
-            <ion-col>
-              <ion-button size="small">Foto aufnehmen</ion-button>
-             <ion-button size="small">Foto auswählen</ion-button>
-            </ion-col>
+              <ion-button size="small" color="medium" class="ion-padding-end"
+                >Foto auswählen</ion-button></ion-col>
+              
           </ion-row>
         </ion-grid>
       </ion-list>
 
       <ion-list>
         <ion-item>
-          <ion-label>Benutzerdaten</ion-label>
+          <ion-label class="boldText">Benutzerdaten</ion-label>
         </ion-item>
       </ion-list>
       <ion-grid>
@@ -64,17 +70,24 @@
 
       <ion-list>
         <ion-item>
-          <ion-label>Funktionen</ion-label>
+          <ion-label class="boldText">Funktionen</ion-label>
         </ion-item>
       </ion-list>
-      <ion-button class="ion-padding-start" size="small">Benutzerdaten ändern</ion-button>
-      <ion-button class="ion-padding-start" size="small">Passwort zurücksetzen</ion-button>
-      <ion-button class="ion-padding-start" size="small">Konto löschen</ion-button>
+      <ion-button class="ion-padding-start" size="small" color="medium"
+        >Benutzerdaten ändern</ion-button
+      >
+      <ion-button class="ion-padding-start" size="small" color="medium"
+        >Passwort zurücksetzen</ion-button
+      >
+      <ion-button class="ion-padding-start" size="small" color="medium"
+        >Konto löschen</ion-button
+      >
     </ion-content>
   </ion-page>
 </template>
   
-  <script setup lang="ts">
+  <script lang="ts">
+  import { person } from "ionicons/icons";
 import {
   IonButton,
   IonList,
@@ -96,7 +109,28 @@ import {
   IonCheckbox,
   IonTabButton,
 } from "@ionic/vue";
+import { usePhotoGallery, UserPhoto } from '../composables/usePhotoGallery';
+export default{
+setup() {
+    const { profilPhoto, takePhoto } = usePhotoGallery();
+    return {
+      profilPhoto,
+      takePhoto,
+      close,
+    };
+  },
+};
+
 </script>
 
   <style scoped>
+.bgcolor {
+  --ion-background-color: #eeeeee;
+}
+.boldText {
+  font-weight: 700;
+}
+ion-button {
+  text-transform: none;
+}
 </style>

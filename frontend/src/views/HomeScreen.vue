@@ -50,6 +50,21 @@
         <br />
         <br />
       </ion-grid>
+
+      <ion-grid>
+  <ion-row>
+    <ion-col size="9">Neues Rezept erfassen</ion-col>
+    <ion-col size="3">
+      <ion-fab>
+  <ion-fab-button size="small">
+    <ion-icon  :icon="add"></ion-icon>
+  </ion-fab-button>
+</ion-fab>
+      
+      </ion-col>
+  </ion-row>
+</ion-grid>
+
     </ion-content>
   </ion-page>
 </template>
@@ -57,8 +72,11 @@
   <script setup lang="ts">
 import { defineComponent } from "vue";
 import { searchCircle } from 'ionicons/icons';
+import { add } from 'ionicons/icons';
 
 import {
+  IonFabButton, 
+  IonFab,
   IonButton,
   IonBackButton,
   IonList,

@@ -9,15 +9,15 @@
             <ion-label>Home</ion-label>
           </ion-tab-button>
           <ion-tab-button tab="tab2" href="/tabs/myfavorites">
-            <ion-icon :icon="heart" />
+            <ion-icon :icon="heart" color="danger"/>
             <ion-label>Favoriten</ion-label>
           </ion-tab-button>
           <ion-tab-button tab="tab3" href="/tabs/cookingbook">
-            <ion-icon :icon="book" />
+            <ion-icon :icon="book" color="warning"/>
             <ion-label>Kochbuch</ion-label>
           </ion-tab-button>
           <ion-tab-button tab="tab4" href="/tabs/useraccount">
-            <ion-icon :icon="person" />
+            <ion-icon :icon="person" color="medium"/>
             <ion-label>Account</ion-label>
           </ion-tab-button>
         </ion-tab-bar>
