@@ -2,10 +2,10 @@
   <ion-page>
     <ion-header :translucent="true">
       <ion-toolbar>
+        <ion-title>Filter</ion-title>
         <ion-buttons slot="start">
         <ion-back-button text="Anwenden" :icon="checkmark"></ion-back-button>
       </ion-buttons>
-        <ion-title>Filter</ion-title>
       </ion-toolbar>
     </ion-header>
 
