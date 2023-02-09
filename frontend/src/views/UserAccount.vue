@@ -25,22 +25,21 @@
       <ion-list>
         <ion-grid>
           <ion-row>
-            <ion-col>
-              <ion-img
-                style="width: 80px; height: 80 px"
-                src="assets/Pictures/UserPhoto.jpeg"
-                alt="UserPhoto"
-              >
-              </ion-img>
-            </ion-col>
-            <ion-col>
-              <ion-button size="small" color="medium" class="ion-padding-end"
+          <ion-col>
+            <ion-img src="../../assets/Pictures/Person.jpg" alt="UserPhoto" style="width: 80px; height: 80 px"></ion-img>
+            <!--falls möglich das ProfilPhoto auf dem User speichern -->
+            <ion-img v-if="profilPhoto" :src="profilPhoto.webviewPath" alt="UserPhoto" style="width: 80px; height: 80 px"></ion-img>         
+          </ion-col>
+          <ion-col><ion-button
+                size="small"
+                color="medium"
+                class="ion-padding-end"
+                @click="takePhoto()"
                 >Foto aufnehmen</ion-button
               >
               <ion-button size="small" color="medium" class="ion-padding-end"
-                >Foto auswählen</ion-button
-              >
-            </ion-col>
+                >Foto auswählen</ion-button></ion-col>
+              
           </ion-row>
         </ion-grid>
       </ion-list>
@@ -87,7 +86,7 @@
   </ion-page>
 </template>
   
-  <script setup lang="ts">
+  <script lang="ts">
   import { person } from "ionicons/icons";
 import {
   IonButton,
@@ -110,17 +109,28 @@ import {
   IonCheckbox,
   IonTabButton,
 } from "@ionic/vue";
+import { usePhotoGallery, UserPhoto } from '../composables/usePhotoGallery';
+export default{
+setup() {
+    const { profilPhoto, takePhoto } = usePhotoGallery();
+    return {
+      profilPhoto,
+      takePhoto,
+      close,
+    };
+  },
+};
+
 </script>
 
   <style scoped>
-  .bgcolor{
-    --ion-background-color: #EEEEEE
+.bgcolor {
+  --ion-background-color: #eeeeee;
 }
-  .boldText{
-    font-weight: 700;
-  }
-  ion-button{
-    text-transform: none;
-    
-  }
+.boldText {
+  font-weight: 700;
+}
+ion-button {
+  text-transform: none;
+}
 </style>
