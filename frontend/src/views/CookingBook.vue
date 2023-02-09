@@ -97,7 +97,7 @@ import {
 import { defineComponent } from "vue";
 import { searchCircle } from "ionicons/icons";
 import { useRecipes} from "../composables/useRecipes";
-
+const {recipes,getRecipes}=useRecipes();
 const filterPath ="/tabs/filterrecipe"
 
 const viewRecipe = "/tabs/recipeDetail";
