@@ -27,15 +27,26 @@
 </template>
 
 <script setup lang="ts">
-  import {
-    IonTabBar,
-    IonTabButton,
-    IonTabs,
-    IonContent,
-    IonLabel,
-    IonIcon,
-    IonPage,
-    IonRouterOutlet,
-  } from '@ionic/vue';
   import { home, list, heart, person, book } from 'ionicons/icons';
+  import {
+  IonIcon,
+  IonSearchbar,
+  IonImg,
+  IonCol,
+  IonGrid,
+  IonRow,
+  IonButton, 
+  IonBackButton,
+  IonList,
+  IonItem,
+  IonCheckbox,
+  IonLabel,
+  IonInput,
+  IonContent,
+  IonHeader,
+  IonPage,
+  IonTitle,
+  IonToolbar,
+  IonRouterOutlet,IonTabBar, IonTabs, IonTabButton,
+} from "@ionic/vue";
 </script>
