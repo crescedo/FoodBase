@@ -62,6 +62,11 @@
           </ion-col>
         </ion-row>
       </ion-grid>
+      <ion-list>
+        <ion-item v-for="recipe in recipes" :key="recipe.id">
+          {{ recipe.createdAt }}
+        </ion-item>
+      </ion-list>
     </ion-content>
   </ion-page>
 </template>
@@ -91,8 +96,9 @@ import {
 } from "@ionic/vue";
 import { defineComponent } from "vue";
 import { searchCircle } from "ionicons/icons";
+import { useRecipes} from "../composables/useRecipes";
 
-const filterPath = "/tabs/filterrecipe";
+const filterPath ="/tabs/filterrecipe"
 
 const viewRecipe = "/tabs/recipeDetail";
 </script>
