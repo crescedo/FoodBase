@@ -2,13 +2,13 @@
   <ion-page>
     <ion-header :translucent="true">
       <ion-toolbar>
-        <ion-title
+        <ion-title class="boldText"
           ><ion-icon :icon="heart" color="danger"></ion-icon> Meine Favoriten
           <ion-icon :icon="heart" color="danger"></ion-icon
         ></ion-title>
       </ion-toolbar>
     </ion-header>
-    <ion-content :fullscreen="true">
+    <ion-content :fullscreen="true" class="bgcolor">
       <ion-header collapse="condense">
         <ion-toolbar>
           <ion-title size="large">Blank</ion-title>
@@ -17,9 +17,9 @@
       <ion-grid>
         <ion-row>
           <ion-col size="9">
-            <ion-searchbar
+            <ion-searchbar class="scolor"
               :search-icon="searchCircle"
-              placeholder="Rezept suchen"
+              placeholder="Suchen"
             ></ion-searchbar>
           </ion-col>
           <ion-col class="ion-padding-top">
@@ -39,7 +39,7 @@
           </ion-col>
         </ion-row>
         <ion-row>
-          <ion-col> Älplermagarone </ion-col>
+          <ion-col class="boldText"> Älplermagarone </ion-col>
         </ion-row>
         <ion-row>
           <ion-col>
@@ -91,4 +91,13 @@ const viewRecipe ="/tabs/recipeDetail"
 
   
   <style scoped>
+  .bgcolor{
+    --ion-background-color: #FFE3EB
+}
+  .boldText{
+    font-weight: 700;
+  }
+  .scolor{
+    --ion-background-color: #FFFFFF
+  }
 </style>
