@@ -2,7 +2,10 @@
   <ion-page>
     <ion-header :translucent="true">
       <ion-toolbar>
-        <ion-title>Mein Account</ion-title>
+        <ion-title>
+          <ion-icon :icon="person" color="medium"></ion-icon> Mein Account
+          <ion-icon :icon="person" color="medium"></ion-icon>
+        </ion-title>
       </ion-toolbar>
     </ion-header>
 
@@ -31,8 +34,12 @@
               </ion-img>
             </ion-col>
             <ion-col>
-              <ion-button size="small">Foto aufnehmen</ion-button>
-             <ion-button size="small">Foto auswählen</ion-button>
+              <ion-button size="small" color="medium"
+                >Foto aufnehmen</ion-button
+              >
+              <ion-button size="small" color="medium"
+                >Foto auswählen</ion-button
+              >
             </ion-col>
           </ion-row>
         </ion-grid>
@@ -67,14 +74,21 @@
           <ion-label>Funktionen</ion-label>
         </ion-item>
       </ion-list>
-      <ion-button class="ion-padding-start" size="small">Benutzerdaten ändern</ion-button>
-      <ion-button class="ion-padding-start" size="small">Passwort zurücksetzen</ion-button>
-      <ion-button class="ion-padding-start" size="small">Konto löschen</ion-button>
+      <ion-button class="ion-padding-start" size="small" color="medium"
+        >Benutzerdaten ändern</ion-button
+      >
+      <ion-button class="ion-padding-start" size="small" color="medium"
+        >Passwort zurücksetzen</ion-button
+      >
+      <ion-button class="ion-padding-start" size="small" color="medium"
+        >Konto löschen</ion-button
+      >
     </ion-content>
   </ion-page>
 </template>
   
   <script setup lang="ts">
+  import { person } from "ionicons/icons";
 import {
   IonButton,
   IonList,

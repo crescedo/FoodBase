@@ -2,18 +2,18 @@
   <ion-page>
     <ion-header :translucent="true">
       <ion-toolbar>
-        <ion-title
-          ><ion-icon :icon="book"></ion-icon> Kochbuch
-          <ion-icon :icon="book"></ion-icon
+        <ion-title class="boldText"
+          ><ion-icon :icon="book" color="warning"></ion-icon> Kochbuch
+          <ion-icon :icon="book" color="warning"></ion-icon
         ></ion-title>
-   <!--       <div>
+        <!--       <div>
               <ion-button size="small" color="green" v-bind:router-link="viewRecipe">
                 <ion-icon  slot="icon-only" :icon="addCircleOutline" />
               </ion-button>
               </div>-->
       </ion-toolbar>
     </ion-header>
-    <ion-content :fullscreen="true">
+    <ion-content :fullscreen="true" class="bgcolor">
       <ion-header collapse="condense">
         <ion-toolbar>
           <ion-title size="large">Blank</ion-title>
@@ -22,17 +22,21 @@
       <ion-grid>
         <ion-row>
           <ion-col size="9">
-            <ion-searchbar
+            <ion-searchbar class="scolor"
               :search-icon="searchCircle"
-              placeholder="suchen"
+              placeholder="Suchen"
             ></ion-searchbar>
           </ion-col>
           <ion-col class="ion-padding-top">
             <div>
-              <ion-button size="small" color="danger" v-bind:router-link="filterPath">
-                <ion-icon  slot="icon-only" :icon="filter" />
+              <ion-button
+                size="small"
+                color="warning"
+                v-bind:router-link="filterPath"
+              >
+                <ion-icon slot="icon-only" :icon="filter" />
               </ion-button>
-              </div>
+            </div>
           </ion-col>
         </ion-row>
       </ion-grid>
@@ -44,8 +48,8 @@
           </ion-col>
         </ion-row>
         <ion-row>
-          <ion-col> Älplermagarone </ion-col>
-                  </ion-row>
+          <ion-col class="boldText"> Älplermagarone </ion-col>
+        </ion-row>
         <ion-row>
           <ion-col>
             <ion-icon :icon="time" />
@@ -71,7 +75,7 @@ import {
   IonCol,
   IonGrid,
   IonRow,
-  IonButton, 
+  IonButton,
   IonBackButton,
   IonList,
   IonItem,
@@ -88,11 +92,20 @@ import {
 import { defineComponent } from "vue";
 import { searchCircle } from "ionicons/icons";
 
-const filterPath ="/tabs/filterrecipe"
+const filterPath = "/tabs/filterrecipe";
 
-const viewRecipe ="/tabs/recipeDetail"
+const viewRecipe = "/tabs/recipeDetail";
 </script>
 
   
   <style scoped>
+  .bgcolor{
+    --ion-background-color: #FFFED9
+}
+  .boldText{
+    font-weight: 700;
+  }
+    .scolor{
+    --ion-background-color: #FFFFFF
+  }
 </style>
