@@ -86,7 +86,7 @@
   </ion-page>
 </template>
   
-  <script lang="ts">
+  <script setup lang="ts">
   import { person } from "ionicons/icons";
 import {
   IonButton,
@@ -110,16 +110,8 @@ import {
   IonTabButton,
 } from "@ionic/vue";
 import { usePhotoGallery, UserPhoto } from '../composables/usePhotoGallery';
-export default{
-setup() {
-    const { profilPhoto, takePhoto } = usePhotoGallery();
-    return {
-      profilPhoto,
-      takePhoto,
-      close,
-    };
-  },
-};
+
+const { profilPhoto, takePhoto } = usePhotoGallery();
 
 </script>
 
