@@ -53,6 +53,14 @@ const routes: Array<RouteRecordRaw> = [
         path: 'recipeDetail',
         component: () => import('@/views/RecipeDetail.vue')
       }
+      ,
+      {
+        path: 'loginscreen',
+        component: () => import('@/views/LoginScreen.vue')
+      }
+
+
+      
     ]
   }
 ]
