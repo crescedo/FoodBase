@@ -12,6 +12,8 @@ public class Measure {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String nameLong;
+    
     private String nameShort;
 }

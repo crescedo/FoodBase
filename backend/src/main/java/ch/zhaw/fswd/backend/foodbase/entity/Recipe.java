@@ -3,6 +3,9 @@ package ch.zhaw.fswd.backend.foodbase.entity;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -24,14 +27,16 @@ public class Recipe {
     @ManyToOne
     private User createdBy;
 
+    @Cascade(CascadeType.ALL)
     @OneToMany
     private List<Step> cookingSteps;
-
+    @Cascade(CascadeType.ALL)
     @OneToMany
     private List<IngredientQuantity> ingredients;
 
     private List<String> keyWords;
-
+    
+    @Cascade(CascadeType.ALL)
     @OneToOne
     private Image thumbnailUrl; // Link zu einem Bild der als thumbnail verwendet wird
 
