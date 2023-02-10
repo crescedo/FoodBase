@@ -10,6 +10,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -26,10 +27,14 @@ import ch.zhaw.fswd.backend.foodbase.entity.LoginInfo;
 import ch.zhaw.fswd.backend.foodbase.entity.MeasureRepository;
 import ch.zhaw.fswd.backend.foodbase.entity.Recipe;
 import ch.zhaw.fswd.backend.foodbase.entity.RecipeRepository;
+import ch.zhaw.fswd.backend.foodbase.entity.Role;
+import ch.zhaw.fswd.backend.foodbase.entity.RoleRepository;
 import ch.zhaw.fswd.backend.foodbase.entity.Step;
 import ch.zhaw.fswd.backend.foodbase.entity.User;
 import ch.zhaw.fswd.backend.foodbase.entity.UserInfo;
-import ch.zhaw.fswd.backend.foodbase.entity.UserRepository;;
+import ch.zhaw.fswd.backend.foodbase.entity.UserRepository;
+import ch.zhaw.fswd.backend.foodbase.entity.LoginInfoRepository;
+import ch.zhaw.fswd.backend.foodbase.entity.RoleRepository;
 
 @SpringBootApplication
 public class FoodbaseApplication implements CommandLineRunner {
@@ -69,6 +74,12 @@ public class FoodbaseApplication implements CommandLineRunner {
 	@Autowired
 	private MeasureRepository measureRepository;
 
+	@Autowired
+	private LoginInfoRepository loginInfoRepository;
+
+	@Autowired
+	private RoleRepository roleRepository;
+
 	@Override
 	public void run(String... args) throws Exception {
 
@@ -88,13 +99,19 @@ public class FoodbaseApplication implements CommandLineRunner {
 		userInfo.setFirstName("Gianni");
 		userInfo.setLastName("Rivera");
 		Image im = new Image();
-		im.setUrl("https://picsum.photos/id/" + random.nextInt(1, 500) + "/200");
+		im.setUrl("https://picsum.photos/id/" + random.nextInt( 500) + "/200");
 		userInfo.setProfilePic(im);
 		newUser.setUserInfo(userInfo);
 		LoginInfo login = new LoginInfo();
-		login.setEmail("gianni.rivera@gmail.com");
+		login.setLoginName("user");
+        login.setPasswordHash(new BCryptPasswordEncoder().encode("user"));
+        Role r = new Role();
+        r.setRoleName("ROLE_USER");
+        roleRepository.save(r);
+        login.getRoles().add(r);
+		/*login.setEmail("gianni.rivera@gmail.com");
 		login.setPassword("12345");
-		login.setUserName("roi7");
+		login.setUserName("roi7"); */
 		newUser.setLoginInfo(login);
 		newUser.setCookings(new ArrayList<Cooking>());
 		newUser.setFavorites(new ArrayList<Recipe>());
@@ -106,11 +123,11 @@ public class FoodbaseApplication implements CommandLineRunner {
 
 			Recipe newRecipe = new Recipe();
 			newRecipe.setCreatedBy(user);
-			Long l = random.nextLong(1, 2);
+			Long l = 1L;
 			Category category = categoryRepository.findById(l).get();
 			newRecipe.setCategory(category);
 			ArrayList<Step> steps = new ArrayList<Step>();
-			int maxLoop = random.nextInt(3, 10);
+			int maxLoop = random.nextInt(10)+1;
 
 			StringBuilder title = new StringBuilder();
 			StringBuilder content = new StringBuilder();
@@ -135,6 +152,7 @@ public class FoodbaseApplication implements CommandLineRunner {
 
 					content.append("\n");
 				}
+				
 				Step step = new Step();
 				step.setStepOrder(i + 1);
 				step.setTitle(title.toString().toUpperCase());
@@ -142,7 +160,7 @@ public class FoodbaseApplication implements CommandLineRunner {
 				ArrayList<Image> images = new ArrayList<>();
 				for (int j = 0; j < 10; j++) {
 					Image image = new Image();
-					image.setUrl("https://picsum.photos/id/" + random.nextInt(1, 500) + "/200");
+					image.setUrl("https://picsum.photos/id/" + (random.nextInt( 500)+1) + "/200");
 					images.add(image);
 				}
 				step.setImages(images);
@@ -156,26 +174,26 @@ public class FoodbaseApplication implements CommandLineRunner {
 			newRecipe.setDifficulty(3);
 
 			ArrayList<IngredientQuantity> ingredients = new ArrayList<IngredientQuantity>();
-			for (int i = 0; i < 5; i++) {
+			/* for (int i = 0; i < 5; i++) {
 
-				l = random.nextLong(1, 20);
+				l = 5L;
 				IngredientQuantity iq = new IngredientQuantity();
 				iq.setIngredient(ingredientRepository.findById(l).get());
-				l = random.nextLong(1, 5);
+				l = 5L;
 				iq.setMeasure(measureRepository.findById(l).get());
-				iq.setQuantity((double) Math.round(random.nextDouble(1, 50)));
+				iq.setQuantity((double) Math.round(1D));
 				ingredients.add(iq);
-			}
+			} */
 
 			newRecipe.setIngredients(ingredients);
 			newRecipe.setServings(4);
 			newRecipe.setThumbnailUrl(null);
 			recipeRepository.save(newRecipe);
 		}
-		ObjectMapper mapper = new ObjectMapper();
-		String jsonUser = mapper.writeValueAsString(user);
+		//ObjectMapper mapper = new ObjectMapper();
+		//String jsonUser = mapper.writeValueAsString(user);
 		// String jsonRecipe = mapper.writeValueAsString(newRecipe);
-		System.out.println(jsonUser);
+		//System.out.println(jsonUser);
 		// System.out.println(jsonRecipe);
 
 	}

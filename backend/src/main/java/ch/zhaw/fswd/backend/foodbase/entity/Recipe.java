@@ -10,15 +10,17 @@ import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeInfo.As;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import lombok.Data;
 import java.time.Duration;
+
 @Entity
 @Data
 public class Recipe {
@@ -39,9 +41,9 @@ public class Recipe {
     @Cascade(CascadeType.ALL)
     @OneToMany
     private List<IngredientQuantity> ingredients;
-
+    @Lob
     private List<String> keyWords;
-    
+
     @Cascade(CascadeType.ALL)
     @OneToOne
     private Image thumbnailUrl; // Link zu einem Bild der als thumbnail verwendet wird
@@ -51,11 +53,8 @@ public class Recipe {
 
     private Integer difficulty; // difficulty as 3/5 chef hats
 
-    @JsonTypeInfo(
-        use = JsonTypeInfo.Id.NAME, 
-        include = As.PROPERTY, 
-        property = "type")
-    private Duration cookingTime; //Kochzeit des Rezepts
+    @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = As.PROPERTY, property = "type")
+    private Duration cookingTime; // Kochzeit des Rezepts
 
-    private Integer servings; //für wieviele ist das Rezept gedacht
+    private Integer servings; // für wieviele ist das Rezept gedacht
 }

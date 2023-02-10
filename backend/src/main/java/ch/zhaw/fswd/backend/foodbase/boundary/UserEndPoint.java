@@ -40,4 +40,5 @@ public class UserEndPoint {
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
+    
 }

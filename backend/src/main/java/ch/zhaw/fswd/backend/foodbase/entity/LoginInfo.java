@@ -1,21 +1,25 @@
 package ch.zhaw.fswd.backend.foodbase.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Data;
 
 @Entity
 @Data
 public class LoginInfo {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private String loginName;
 
-    private String email;
-    
-    private String password;
-    
-    private String userName;
+    @JsonIgnore
+    private String passwordHash;
+
+    @ManyToMany
+    private List<Role> roles = new ArrayList<>();
 }
