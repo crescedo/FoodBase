@@ -10,9 +10,6 @@
     </ion-header>
     <ion-content :fullscreen="true" class="bgcolor">
       <ion-header collapse="condense">
-        <ion-toolbar>
-          <ion-title size="large">Blank</ion-title>
-        </ion-toolbar>
       </ion-header>
       <ion-grid>
         <ion-row>
@@ -31,27 +28,33 @@
           </ion-col>
         </ion-row>
       </ion-grid>
-      <!-- ion-grid v-for""" -->
-      <ion-grid v-bind:router-link="viewRecipe">
-        <ion-row>
-          <ion-col>
-            <ion-img src="assets/Pictures/Repezt1.jpg" alt="FoodBase"></ion-img>
-          </ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col class="boldText"> Älplermagarone </ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col>
-            <ion-icon :icon="time" />
-            30 Min
-          </ion-col>
-          <ion-col>
-            <ion-icon :icon="barbell" />
-            einfach
-          </ion-col>
-        </ion-row>
-      </ion-grid>
+      <ion-card v-for="recipe in recipes" :key="recipe.id">
+        <ion-img> {{ recipe.thumbnailUrl?.url }} </ion-img>
+        <ion-card-header>
+          <ion-card-title>
+            {{ recipe.title
+            }}   <ion-button
+              size="small"
+              color="danger"
+              v-bind:router-link="filterPath">
+              <ion-icon slot="icon-only" :icon="heart" />
+            </ion-button>
+          </ion-card-title>
+          <ion-card-subtitle>{{
+              recipe.category
+            }}</ion-card-subtitle>
+          <ion-card-subtitle v-bind:router-link="viewRecipe"
+            ><ion-icon :icon="time" />{{
+              recipe.cookingTime
+            }}</ion-card-subtitle
+          >
+          <ion-card-subtitle v-bind:router-link="viewRecipe"
+            ><ion-icon :icon="barbell" />
+            {{ recipe.difficulty }}</ion-card-subtitle>
+        </ion-card-header>
+
+        <ion-card-content> </ion-card-content>
+      </ion-card>
     </ion-content>
   </ion-page>
 </template>
@@ -82,11 +85,14 @@ import {
   IonTitle,
   IonToolbar,
   IonTabButton,
+  IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, 
 } from "@ionic/vue";
+import { useRecipes } from "../composables/useRecipes";
 
-const filterPath ="/tabs/filterrecipe"
+const { recipes, getRecipes } = useRecipes();
+const filterPath = "/tabs/filterrecipe";
 
-const viewRecipe ="/tabs/recipeDetail"
+const viewRecipe = "/tabs/recipeDetail";
 </script>
 
   

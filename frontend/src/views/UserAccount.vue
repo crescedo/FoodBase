@@ -18,7 +18,7 @@
 
       <ion-list>
         <ion-item>
-          <ion-label class="boldText">Profilbild</ion-label>
+          <ion-label class="boldText">Profilbild</ion-label> <!-- {{       userInfo.profilePic    }} -->
         </ion-item>
       </ion-list>
 
@@ -52,19 +52,19 @@
       <ion-grid>
         <ion-row>
           <ion-col>Vorname:</ion-col>
-          <ion-col>Var Vorname</ion-col>
+          <ion-col>Var Vorname</ion-col>    <!-- {{       userInfo.firstName    }} -->
         </ion-row>
         <ion-row>
           <ion-col>Nachname:</ion-col>
-          <ion-col>Var Nachname</ion-col>
+          <ion-col>Var Nachname</ion-col> <!-- {{       userInfo.lastName    }} -->
         </ion-row>
         <ion-row>
           <ion-col>Benutzername:</ion-col>
-          <ion-col>Var username</ion-col>
+          <ion-col>Var username</ion-col> <!-- {{       loginInfo.userName    }} -->
         </ion-row>
         <ion-row>
           <ion-col>E-Mailadresse:</ion-col>
-          <ion-col>Var Mailadress</ion-col>
+          <ion-col>Var Mailadress</ion-col> <!-- {{       loginInfo.email    }} -->
         </ion-row>
       </ion-grid>
 
@@ -86,7 +86,7 @@
   </ion-page>
 </template>
   
-  <script lang="ts">
+  <script setup lang="ts">
   import { person } from "ionicons/icons";
 import {
   IonButton,
@@ -110,16 +110,8 @@ import {
   IonTabButton,
 } from "@ionic/vue";
 import { usePhotoGallery, UserPhoto } from '../composables/usePhotoGallery';
-export default{
-setup() {
-    const { profilPhoto, takePhoto } = usePhotoGallery();
-    return {
-      profilPhoto,
-      takePhoto,
-      close,
-    };
-  },
-};
+
+const { profilPhoto, takePhoto } = usePhotoGallery();
 
 </script>
 

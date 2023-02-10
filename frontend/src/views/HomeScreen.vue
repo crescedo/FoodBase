@@ -1,7 +1,7 @@
 <template>
   <ion-page>
 
-    <ion-content :fullscreen="true">
+    <ion-content :fullscreen="true" class="bgcolor">
       <ion-header collapse="condense">
         <ion-toolbar>
           <ion-title size="large">Blank</ion-title>
@@ -17,11 +17,9 @@
           <ion-col size-xl="3">
             <br />
             <br />
-            <br />
-            <br />
-            <br />
+            <h2>
           Willkommen bei 
-          <br />
+            </h2>
         </ion-col>
         </ion-row>
       </ion-grid>
@@ -44,26 +42,23 @@
         <br />
         <ion-row>
           <ion-col>
-            <ion-searchbar :search-icon="searchCircle" placeholder="Rezept suchen"></ion-searchbar>
+            <ion-searchbar :search-icon="searchCircle" placeholder="Rezept suchen" class="scolor"></ion-searchbar>
           </ion-col>
         </ion-row>
         <br />
-        <br />
       </ion-grid>
 
-      <ion-grid>
-  <ion-row>
-    <ion-col size="9">Neues Rezept erfassen</ion-col>
-    <ion-col size="3">
-      <ion-fab>
-  <ion-fab-button size="small">
+    <ion-list>
+        <ion-item class="scolor">
+          <ion-label >Neues Rezept erfassen</ion-label>
+        </ion-item>
+      </ion-list>
+
+  <ion-fab class="test">
+  <ion-fab-button size="small" color="secondary">
     <ion-icon  :icon="add"></ion-icon>
   </ion-fab-button>
 </ion-fab>
-      
-      </ion-col>
-  </ion-row>
-</ion-grid>
 
     </ion-content>
   </ion-page>
@@ -98,6 +93,7 @@ import {
   IonTabButton,
 } from "@ionic/vue";
 
+
 </script>
   
   <style scoped>
@@ -106,4 +102,15 @@ ion-col {
   text-align: center;
 
 }
+.bgcolor{
+    --ion-background-color: #B2E9FF
+}
+.scolor{
+    --ion-background-color: #FFFFFF
+  }
+  .test{
+    position: fixed;
+    bottom: 77px;
+    right: 15px;
+  }
 </style>

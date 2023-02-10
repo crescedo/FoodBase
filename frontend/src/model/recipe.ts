@@ -13,7 +13,7 @@ export interface Recipe {
     cookingSteps?: Array<Step>;
     ingredients?: Array<IngredientQuantity>;
     keyWords?: Array<string>;
-    thumbnailUrl?: Array<Image>; // Link zu einem Bild der als thumbnail verwendet wird
+    thumbnailUrl?: Image; // Link zu einem Bild der als thumbnail verwendet wird
     category?: Category;
     difficulty?: number; // difficulty as 3/5 chef hats
     cookingTime?: Date; //Kochzeit des Rezepts
