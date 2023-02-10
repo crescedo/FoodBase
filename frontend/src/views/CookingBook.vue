@@ -2,11 +2,9 @@
   <ion-page>
     <ion-header :translucent="true">
       <ion-toolbar>
-        <ion-title
-          ><ion-icon :icon="book"></ion-icon> Kochbuch
-          <ion-icon :icon="book"></ion-icon
-        ></ion-title>
-   <!--       <div>
+        <ion-title><ion-icon :icon="book"></ion-icon> Kochbuch
+          <ion-icon :icon="book"></ion-icon></ion-title>
+        <!--       <div>
               <ion-button size="small" color="green" v-bind:router-link="viewRecipe">
                 <ion-icon  slot="icon-only" :icon="addCircleOutline" />
               </ion-button>
@@ -22,52 +20,39 @@
       <ion-grid>
         <ion-row>
           <ion-col size="9">
-            <ion-searchbar
-              :search-icon="searchCircle"
-              placeholder="suchen"
-            ></ion-searchbar>
+            <ion-searchbar :search-icon="searchCircle" placeholder="suchen"></ion-searchbar>
           </ion-col>
           <ion-col class="ion-padding-top">
             <div>
               <ion-button size="small" color="danger" v-bind:router-link="filterPath">
-                <ion-icon  slot="icon-only" :icon="filter" />
+                <ion-icon slot="icon-only" :icon="filter" />
               </ion-button>
-              </div>
+            </div>
           </ion-col>
         </ion-row>
       </ion-grid>
-      <!-- ion-grid v-for""" -->
-      <ion-grid v-bind:router-link="viewRecipe">
-        <ion-row>
-          <ion-col>
-            <ion-img src="assets/Pictures/Repezt1.jpg" alt="FoodBase"></ion-img>
-          </ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col> Älplermagarone </ion-col>
-                  </ion-row>
-        <ion-row>
-          <ion-col>
-            <ion-icon :icon="time" />
-            <!-- cookingtime""" -->
-            30 Min
-          </ion-col>
-          <ion-col>
-            <ion-icon :icon="barbell" />
-            einfach
-          </ion-col>
-        </ion-row>
-      </ion-grid>
+
+
       <ion-list>
         <ion-item v-for="recipe in recipes" :key="recipe.id">
-          {{ recipe.createdAt }}
+          <ion-card >
+            <img alt="Silhouette of mountains" src=""/>
+            <ion-card-header>
+              <ion-card-title>Card Title</ion-card-title>
+              <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
+            </ion-card-header>
+
+            <ion-card-content>
+              Here's a small text description for the card content. Nothing more, nothing less.
+            </ion-card-content>
+          </ion-card>
         </ion-item>
       </ion-list>
     </ion-content>
   </ion-page>
 </template>
   
-  <script setup lang="ts">
+<script setup lang="ts">
 import { book, time, barbell, filter, addCircleOutline } from "ionicons/icons";
 import {
   IonIcon,
@@ -76,7 +61,7 @@ import {
   IonCol,
   IonGrid,
   IonRow,
-  IonButton, 
+  IonButton,
   IonBackButton,
   IonList,
   IonItem,
@@ -89,17 +74,23 @@ import {
   IonTitle,
   IonToolbar,
   IonTabButton,
+  IonCard,
+  IonCardTitle,
+  IonCardHeader,
+  IonCardContent,
+  IonCardSubtitle
 } from "@ionic/vue";
 import { defineComponent } from "vue";
 import { searchCircle } from "ionicons/icons";
-import { useRecipes} from "../composables/useRecipes";
+import { useRecipes } from "../composables/useRecipes";
 
-const {recipes,getRecipes} = useRecipes();
-const filterPath ="/tabs/filterrecipe"
+const { recipes, getRecipes } = useRecipes();
+const filterPath = "/tabs/filterrecipe"
 
-const viewRecipe ="/tabs/recipeDetail"
+const viewRecipe = "/tabs/recipeDetail"
 </script>
 
   
-  <style scoped>
+<style scoped>
+
 </style>
