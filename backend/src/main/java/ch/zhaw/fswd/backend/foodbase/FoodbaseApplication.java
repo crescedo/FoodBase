@@ -5,6 +5,8 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Random;
 
+import javax.servlet.http.Cookie;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -33,6 +35,8 @@ import ch.zhaw.fswd.backend.foodbase.entity.Step;
 import ch.zhaw.fswd.backend.foodbase.entity.User;
 import ch.zhaw.fswd.backend.foodbase.entity.UserInfo;
 import ch.zhaw.fswd.backend.foodbase.entity.UserRepository;
+import ch.zhaw.fswd.backend.foodbase.security.TokenGenerator;
+import ch.zhaw.fswd.backend.foodbase.security.UserAuthResponse;
 import ch.zhaw.fswd.backend.foodbase.entity.LoginInfoRepository;
 import ch.zhaw.fswd.backend.foodbase.entity.RoleRepository;
 
@@ -80,6 +84,10 @@ public class FoodbaseApplication implements CommandLineRunner {
 	@Autowired
 	private RoleRepository roleRepository;
 
+	@Autowired
+    private TokenGenerator tokenGenerator;
+
+
 	@Override
 	public void run(String... args) throws Exception {
 
@@ -89,8 +97,8 @@ public class FoodbaseApplication implements CommandLineRunner {
 				"aliqua."
 		};
 
-		String s = FullResponseBuilder.getFullResponse("https://picsum.photos/200/300");
-		System.out.println(s);
+		
+
 		// neues User hinzufügen
 		Random random = new Random();
 
@@ -109,9 +117,7 @@ public class FoodbaseApplication implements CommandLineRunner {
         r.setRoleName("ROLE_USER");
         roleRepository.save(r);
         login.getRoles().add(r);
-		/*login.setEmail("gianni.rivera@gmail.com");
-		login.setPassword("12345");
-		login.setUserName("roi7"); */
+		
 		newUser.setLoginInfo(login);
 		newUser.setCookings(new ArrayList<Cooking>());
 		newUser.setFavorites(new ArrayList<Recipe>());
@@ -119,10 +125,12 @@ public class FoodbaseApplication implements CommandLineRunner {
 		userRepository.save(newUser);
 
 		User user = userRepository.findById(newUser.getId()).get();
+		
+		//Rezepte generieren
 		for (int f = 0; f < 20; f++) {
 
 			Recipe newRecipe = new Recipe();
-			newRecipe.setCreatedBy(user);
+			newRecipe.setCreator(user);
 			Long l = 1L;
 			Category category = categoryRepository.findById(l).get();
 			newRecipe.setCategory(category);
@@ -190,6 +198,15 @@ public class FoodbaseApplication implements CommandLineRunner {
 			newRecipe.setThumbnailUrl(null);
 			recipeRepository.save(newRecipe);
 		}
+		
+		
+		String username = "user";
+        
+        UserAuthResponse userAuthResponse = tokenGenerator.generateJWT(username);
+        Cookie cookie = new Cookie("Authentication", userAuthResponse.getJwsToken());
+
+	//System.out.println(	FullResponseBuilder.getFullResponse("http://localhost:8080/auth/token"));
+
 		//ObjectMapper mapper = new ObjectMapper();
 		//String jsonUser = mapper.writeValueAsString(user);
 		// String jsonRecipe = mapper.writeValueAsString(newRecipe);

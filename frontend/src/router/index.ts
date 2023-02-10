@@ -1,18 +1,21 @@
 import { createRouter, createWebHistory } from '@ionic/vue-router';
 import { RouteRecordRaw } from 'vue-router';
-import CookingBook from '../views/CookingBook.vue'
-import HomeScreen from '../views/HomeScreen.vue'
-import LoginScreen from '../views/LoginScreen.vue'
-import MyFavorites from '../views/MyFavorites.vue'
-import TabsPage from '../views/TabsPage.vue'
-import UserAccount from '../views/UserAccount.vue'
+import CookingBook from '../views/CookingBook.vue';
+import HomeScreen from '../views/HomeScreen.vue';
+import Login from '../views/Login.vue';
+import MyFavorites from '../views/MyFavorites.vue';
+import TabsPage from '../views/TabsPage.vue';
+import UserAccount from '../views/UserAccount.vue';
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    redirect: '/tabs/homescreen'
+    redirect: '/login'
   },
-
+  {
+    path: '/login',
+    component: Login,
+  },
   {
     path: '/tabs/',
     component: TabsPage,
@@ -42,7 +45,7 @@ const routes: Array<RouteRecordRaw> = [
       ,
       {
         path: 'loginscreen',
-        component: () => import('@/views/LoginScreen.vue')
+        component: () => import('@/views/Login.vue')
       },
       {
         path: 'filterrecipe',

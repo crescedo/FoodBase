@@ -32,7 +32,7 @@ public class Recipe {
     private LocalDateTime createdAt;
 
     @ManyToOne
-    private User createdBy;
+    private User creator;
 
     @Cascade(CascadeType.ALL)
     @OneToMany

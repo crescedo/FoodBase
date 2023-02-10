@@ -37,7 +37,7 @@ public class User {
     private List<Recipe> favorites; // eine Liste, wo alle favoriten gespeichert werden
     
     @Cascade(CascadeType.ALL)
-    @OneToMany(fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.LAZY)
     private List<Cooking> cookings; // alle Rezepte die gekocht werden
 
     /*
