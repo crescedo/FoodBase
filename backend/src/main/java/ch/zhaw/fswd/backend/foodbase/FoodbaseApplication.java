@@ -130,8 +130,10 @@ public class FoodbaseApplication implements CommandLineRunner {
 		for (int f = 0; f < 20; f++) {
 
 			Recipe newRecipe = new Recipe();
+
 			newRecipe.setCreator(user);
 			Long l = 1L;
+
 			Category category = categoryRepository.findById(l).get();
 			newRecipe.setCategory(category);
 			ArrayList<Step> steps = new ArrayList<Step>();
@@ -198,6 +200,7 @@ public class FoodbaseApplication implements CommandLineRunner {
 			newRecipe.setThumbnailUrl(null);
 			recipeRepository.save(newRecipe);
 		}
+
 		
 		
 		String username = "user";
@@ -209,6 +212,7 @@ public class FoodbaseApplication implements CommandLineRunner {
 
 		//ObjectMapper mapper = new ObjectMapper();
 		//String jsonUser = mapper.writeValueAsString(user);
+
 		// String jsonRecipe = mapper.writeValueAsString(newRecipe);
 		//System.out.println(jsonUser);
 		// System.out.println(jsonRecipe);
