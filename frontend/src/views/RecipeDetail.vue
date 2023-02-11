@@ -27,13 +27,32 @@
               Number(recipe.isoString?.match(/(\d+)M/)?.[1] || 0)
             }} minutes</i>
             <br>
-            difficulty:  <ion-icon v-for="n in recipe.difficulty" :key="n"    :icon="star" />
+            difficulty: <ion-icon v-for="n in recipe.difficulty" :key="n" :icon="star" />
           </ion-card-subtitle>
-          <ion-card-title>
+          <ion-card-title class="ion-text-left">
             {{ recipe.title }}
           </ion-card-title>
           <ion-item>
-            <ion-text>{{ recipe.descriptionShort }}</ion-text>
+
+            <ion-grid >
+              <ion-row class="ion-text-left">
+                <ion-text >{{ recipe.descriptionShort }}</ion-text>
+              </ion-row>
+              <ion-row >
+               
+                <ion-col size="6" class="ion-text-center" >
+                  <ion-button expand="block" color="danger" @click ="addToFavorites(recipe.id!)">
+                  <ion-icon  slot="icon-only" :icon="heart"/>
+                </ion-button>
+                </ion-col>
+                <ion-col  size="6" class="ion-text-center" >
+                  <ion-button expand="block" color="primary">
+                  <ion-icon  slot="icon-only" :icon="add"/>
+                </ion-button>
+                </ion-col>
+                
+              </ion-row>
+            </ion-grid>
           </ion-item>
 
         </ion-card-header>
@@ -94,7 +113,7 @@
 </template>
 
 <script setup lang="ts">
-import { time, barbell, filter, person, card, text, star } from "ionicons/icons";
+import { time, barbell, filter, person, card, text, star, heart, add } from "ionicons/icons";
 import {
   IonIcon,
   IonSearchbar,
@@ -127,15 +146,21 @@ import { defineComponent } from "vue";
 import { searchCircle } from "ionicons/icons";
 import { useRoute } from "vue-router";
 import { useRecipeDetail } from "@/composables/useRecipeDetail";
+import { useUser } from "@/composables/useUser";
 import RecipeView from "@/components/RecipeView.vue";
+
+const{addToFavorites}=useUser();
 
 const { recipe, recipe_id, onMount } = useRecipeDetail();
 //console.log('hello')
 const route = useRoute();
 recipe_id.value = parseInt(route.params.id.toString());
 
+
 const cookingBook = "/tabs/cookingbook";
 </script>
 <style scoped>
-
+.scolor {
+  --ion-background-color: #ffffff;
+}
 </style>

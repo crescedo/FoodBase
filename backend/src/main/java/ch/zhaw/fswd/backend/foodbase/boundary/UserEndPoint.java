@@ -17,6 +17,7 @@ import ch.zhaw.fswd.backend.foodbase.controller.UserController;
 import ch.zhaw.fswd.backend.foodbase.entity.LoginInfo;
 import ch.zhaw.fswd.backend.foodbase.entity.User;
 import ch.zhaw.fswd.backend.foodbase.entity.UserRepository;
+import ch.zhaw.fswd.backend.foodbase.entity.Recipe;
 
 import java.security.Principal;
 import java.util.List;
@@ -62,6 +63,11 @@ public class UserEndPoint {
     public void addNewUser(@RequestBody LoginInfo newUserLoginInfo) {
 
         userController.persistNewUser(newUserLoginInfo);
+    }
+    @RequestMapping(path = "/api/users/favorites", method = RequestMethod.PUT)
+    @PreAuthorize("isAuthenticated() AND hasRole('USER')")
+    public void updateFavorites(@RequestBody Recipe recipe, Principal principal) {
+        userController.updateFavorites(recipe, principal.getName());
     }
 
 }

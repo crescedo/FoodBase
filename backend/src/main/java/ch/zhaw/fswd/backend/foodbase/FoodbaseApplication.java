@@ -41,7 +41,7 @@ import ch.zhaw.fswd.backend.foodbase.entity.UserRepository;
 import ch.zhaw.fswd.backend.foodbase.security.TokenGenerator;
 import ch.zhaw.fswd.backend.foodbase.security.UserAuthResponse;
 import ch.zhaw.fswd.backend.foodbase.entity.LoginInfoRepository;
-import ch.zhaw.fswd.backend.foodbase.entity.RoleRepository;
+import ch.zhaw.fswd.backend.foodbase.controller.UserController;
 
 @SpringBootApplication
 public class FoodbaseApplication implements CommandLineRunner {
@@ -95,6 +95,9 @@ public class FoodbaseApplication implements CommandLineRunner {
 
 	@Autowired
 	private RecipeController recipeController;
+
+	@Autowired
+	private UserController userController;
 
 	@Override
 	public void run(String... args) throws Exception {
@@ -248,7 +251,7 @@ public class FoodbaseApplication implements CommandLineRunner {
 			newRecipe.setThumbnailUrl(thumbnail);
 			recipeRepository.save(newRecipe);
 		}
-
+//userController.updateFavorites(recipeRepository.findById(1L).get(), "user");
 		List<Recipe> recipes = recipeController.findAllRecipesByTitle("Curry Bean");
 		/*
 		 * String username = "user";
