@@ -55,6 +55,11 @@ public class Recipe {
 
     @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = As.PROPERTY, property = "type")
     private Duration cookingTime; // Kochzeit des Rezepts
+    
+    private String isoString ;
 
     private Integer servings; // für wieviele ist das Rezept gedacht
+   
+    @Lob
+    private String descriptionShort;
 }

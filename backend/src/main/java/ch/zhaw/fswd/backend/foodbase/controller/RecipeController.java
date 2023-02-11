@@ -10,12 +10,12 @@ import ch.zhaw.fswd.backend.foodbase.entity.Recipe;
 import ch.zhaw.fswd.backend.foodbase.entity.RecipeRepository;
 
 @Component
-public class RecipeController{
+public class RecipeController {
 
     @Autowired
     private RecipeRepository recipeRepository;
 
-    public List<Recipe> listAllRecipes(Long creatorId){
+    public List<Recipe> listAllRecipes(Long creatorId) {
         return recipeRepository.findAllRecipesByCreatorId(creatorId);
     }
 
@@ -29,6 +29,10 @@ public class RecipeController{
 
     public void addRecipe(Recipe newRecipe) {
         recipeRepository.save(newRecipe);
+    }
+
+    public List<Recipe> findAllRecipesByTitle(String title) {
+        return recipeRepository.findAllRecipesByRecipeTitle(title.toLowerCase());
     }
 
 }

@@ -38,7 +38,7 @@
             <ion-text> <p>Passwort vergessen?</p></ion-text>
             <ion-text>
               Kein Account?
-              <ion-button shape="round">Registrieren</ion-button>
+              <ion-button shape="round" v-bind:router-link="registerPath">Registrieren</ion-button>
             </ion-text>
           </ion-col>
         </ion-row>
@@ -65,7 +65,7 @@ import { useLogin } from "../composables/useLogin";
 const { username, password, login } = useLogin();
 
 const homScreenPath ="/tabs/HomeScreen"
-
+const registerPath = "/register";
 </script>
 
 <style scoped>

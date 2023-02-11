@@ -14,4 +14,7 @@ public interface RecipeRepository extends JpaRepository<Recipe, Long> {
     List<Recipe> findAllRecipesByCreatorId( Long creatorId);
     
 
+    @Query("SELECT r FROM Recipe as r WHERE LOWER(r.title) LIKE %:title%")
+    List<Recipe> findAllRecipesByRecipeTitle(@Param("title") String title);
+
 }

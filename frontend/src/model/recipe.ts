@@ -8,8 +8,9 @@ import {IngredientQuantity} from "@/model/ingredientQuantity"
 export interface Recipe {
     id?: number;
     title?: string;
+    descriptionShort?:string;
     createdAt?: Date;
-    createdBy?: User;
+    creator?: User;
     cookingSteps?: Array<Step>;
     ingredients?: Array<IngredientQuantity>;
     keyWords?: Array<string>;
@@ -17,5 +18,6 @@ export interface Recipe {
     category?: Category;
     difficulty?: number; // difficulty as 3/5 chef hats
     cookingTime?: Date; //Kochzeit des Rezepts
+    isoString?:string;
     servings?: number; //fü
 }

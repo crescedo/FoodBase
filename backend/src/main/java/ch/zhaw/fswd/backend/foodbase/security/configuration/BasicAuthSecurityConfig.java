@@ -40,18 +40,26 @@ public class BasicAuthSecurityConfig {
         return users;
     }
 
+    
     @Bean
     @Order(2)
     public SecurityFilterChain filterChainAuthBasic(HttpSecurity http) throws Exception {
+       
+        http.csrf().disable();
+
         http.antMatcher("/auth/token")
                     .httpBasic().and()
                     .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
                     .authorizeRequests()
                     .antMatchers(HttpMethod.OPTIONS,"/auth/token").permitAll()
+                    .antMatchers("/auth/users").permitAll()
                     .anyRequest().authenticated();
+        
+                    
         return http.build();
     }
     
+    //@Autowired
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
         return authenticationConfiguration.getAuthenticationManager();

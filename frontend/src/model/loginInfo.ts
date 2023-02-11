@@ -1,6 +1,6 @@
 export interface LoginInfo {
     id?: number;
-    email?: string;
-    password?: string;
-    userName?: string;
+    loginName?: string;
+    passwordHash?: string;
+    roles?: Array<string>;
 }

@@ -18,6 +18,9 @@ import ch.zhaw.fswd.backend.foodbase.entity.Recipe;
 import ch.zhaw.fswd.backend.foodbase.entity.RecipeRepository;
 
 import java.util.Optional;
+
+import javax.websocket.server.PathParam;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -51,6 +54,15 @@ public class RecipeEndPoint {
             return new ResponseEntity<Recipe>(recipe.get(), HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
+    @RequestMapping(path="/api/recipes/search",method=RequestMethod.GET)
+    @PreAuthorize("isAuthenticated() AND hasRole('USER')")
+    public @ResponseBody ResponseEntity<List<Recipe>>getRecipesByTitle(@PathParam("title")String title){
+
+        List<Recipe> recipes = recipeController.findAllRecipesByTitle(title);
+
+        return new ResponseEntity<List<Recipe>>(recipes,HttpStatus.OK);
     }
 
     @GetMapping(path = "/api/recipes/{id}/ingredients")
