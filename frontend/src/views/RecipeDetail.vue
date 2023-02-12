@@ -47,8 +47,10 @@
                     <ion-icon slot="icon-only" :icon='heart' />
 
                   </ion-button>
-                  <ion-alert :is-open="isOpenRef" :header=recipe.title  
-                    message="wurde zu den favoriten hinzugefügt" :buttons="['OK']"
+
+                  <ion-alert :is-open="isOpenRef" :header="recipe.title" 
+                    message= "wurde zu den Favoriten hinzugefügt" :buttons="['OK']"
+
                     @didDismiss="setOpen(false); reloadPage()">
                   </ion-alert>
 

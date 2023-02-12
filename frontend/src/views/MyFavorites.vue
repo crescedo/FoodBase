@@ -25,6 +25,7 @@
       </ion-grid>
       <ion-card v-for="recipe in myFavorites" :key="recipe.id" v-bind:router-link="'/tabs/recipes/' + recipe.id">
 
+
         <ion-img :src="recipe.thumbnailUrl?.url"> </ion-img>
         <ion-card-header>
           <ion-card-subtitle>
@@ -46,6 +47,8 @@
         </ion-card-header>
         <ion-card-content> </ion-card-content>
       </ion-card>
+
+
     </ion-content>
   </ion-page>
 </template>
