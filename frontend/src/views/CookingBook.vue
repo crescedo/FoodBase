@@ -3,61 +3,49 @@
     <ion-header :translucent="true">
       <ion-toolbar>
         <ion-title class="boldText">
-          <ion-icon :icon="book" color="warning"></ion-icon> Mein Kochbuch
+          <ion-icon :icon="book" color="warning"></ion-icon> Recipes
           <ion-icon :icon="book" color="warning"></ion-icon>
         </ion-title>
+
       </ion-toolbar>
     </ion-header>
     <ion-content :fullscreen="true" class="bgcolor">
       <ion-grid>
         <ion-row>
           <ion-col size="9">
-            <ion-searchbar
-              :search-icon="searchCircle"
-              placeholder="Search"
-              class="scolor"
-              v-model="title"
-              @ion-change="getRecipesByTitle"
-            ></ion-searchbar>
+            <ion-searchbar :search-icon="searchCircle" placeholder="Search" class="scolor" v-model="title"
+              @ion-change="getRecipesByTitle"></ion-searchbar>
           </ion-col>
           <ion-col class="ion-padding-top">
             <div>
-              <ion-button
-                size="small"
-                color="warning"
-                v-bind:router-link="filterPath"
-              >
+              <ion-button size="small" color="warning" v-bind:router-link="filterPath">
                 <ion-icon slot="icon-only" :icon="filter" />
               </ion-button>
             </div>
           </ion-col>
         </ion-row>
       </ion-grid>
+      <ion-card v-for="recipe in recipes" :key="recipe.id" v-bind:router-link="'/tabs/recipes/' + recipe.id">
 
-      <ion-card
-        v-for="recipe in recipes"
-        :key="recipe.id"
-        v-bind:router-link="'/tabs/recipes/' + recipe.id"
-      >
         <ion-img :src="recipe.thumbnailUrl?.url"> </ion-img>
         <ion-card-header>
-          <ion-card-title>
-            {{ recipe.title }}
-          </ion-card-title>
           <ion-card-subtitle>
-            Kategorie: <i>{{ recipe.category?.name }}</i>
-            <br />
-            Erstellt von: <i>{{ recipe.creator?.loginInfo?.loginName }}</i>
-            <br />
-            Vorbereitungszeit:
-            <i
-              >{{ Number(recipe.isoString?.match(/(\d+)H/)?.[1] || 0) }} h
-              {{ Number(recipe.isoString?.match(/(\d+)M/)?.[1] || 0) }} min
-            </i>
-            <br />
-            Schwierigkeit:
-            <ion-icon v-for="n in recipe.difficulty" :key="n" :icon="star" />
+            Category: <i>{{ recipe.category?.name }}</i>
+            <br>
+            Published by: <i>{{ recipe.creator?.loginInfo?.loginName }}</i>
+            <br>
+            Cooking time: <i>{{ Number(recipe.isoString?.match(/(\d+)H/)?.[1] || 0) }} hour {{
+              Number(recipe.isoString?.match(/(\d+)M/)?.[1] || 0)
+            }} minutes</i>
+            <br>
+            difficulty: <ion-icon v-for="n in recipe.difficulty" :key="n" :icon="star" />
           </ion-card-subtitle>
+          <ion-card-title>
+            {{
+              recipe.title
+            }}
+          </ion-card-title>
+        
         </ion-card-header>
 
         <ion-card-content> </ion-card-content>
@@ -76,7 +64,7 @@ import {
   addCircleOutline,
   heart,
   star,
-  add,
+add,
 } from "ionicons/icons";
 import {
   IonIcon,
@@ -98,11 +86,7 @@ import {
   IonTitle,
   IonToolbar,
   IonTabButton,
-  IonCard,
-  IonCardContent,
-  IonCardHeader,
-  IonCardSubtitle,
-  IonCardTitle,
+  IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle,
 } from "@ionic/vue";
 import { defineComponent } from "vue";
 import { searchCircle } from "ionicons/icons";
@@ -113,6 +97,7 @@ const { recipes, title, getRecipesByTitle } = useRecipes();
 const filterPath = "/tabs/filterrecipe";
 
 const viewRecipe = "/tabs/recipeDetail";
+
 </script>
 
   
