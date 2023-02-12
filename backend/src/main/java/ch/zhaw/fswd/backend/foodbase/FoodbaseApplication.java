@@ -186,7 +186,7 @@ public class FoodbaseApplication implements CommandLineRunner {
 		Recipe kürbisBrot =Builder.createRecipe(userOne, categoryRepository.findById(2L).get(), steps, ingredients, kürbisBrotTitle, kürbisBrotDescription, 1, 2, Builder.createImage("https://www.eatbetter.de/sites/eatbetter.de/files/styles/full_width_tablet_4_3/public/2020-09/kuerbisbrot_1.jpg?h=4521fff0&itok=DP5-5sqK"), Duration.ofHours(3).plusMinutes(30));	
 		recipeRepository.save(kürbisBrot);
 
-		//Kürbissuppe
+	//Kürbissuppe
 		String kürbisSuppeTitle = "Kürbissuppe";
 		String kürbisSuppeDescription = "Für den kühlen Herbst oder Winter.";
 		String kürbisSuppeFirstStepTitle = "Kürbis dünsten";
@@ -210,7 +210,7 @@ public class FoodbaseApplication implements CommandLineRunner {
 
 		Recipe kürbisSuppe =Builder.createRecipe(userOne, categoryRepository.findById(3L).get(), kSsteps, kSingredients, kürbisSuppeTitle, kürbisSuppeDescription, 1, 1, Builder.createImage("https://res.cloudinary.com/swissmilk/image/fetch/ar_16:10,g_auto,w_720,c_fill,f_auto,q_auto,fl_progressive/https://api.swissmilk.ch/wp-content/uploads/2019/06/kuerbissuppe-2560x1707.jpg"), Duration.ofHours(1).plusMinutes(40));	
 		recipeRepository.save(kürbisSuppe); 
-
+	
 		//Valentinsdessert
 		String vdTitle = "Valentinsdessert";
 		String vdDescription = "Zuckersüss und nur für die Liebsten.";
@@ -285,7 +285,7 @@ public class FoodbaseApplication implements CommandLineRunner {
 
 		Recipe BierBrot =Builder.createRecipe(userOne, categoryRepository.findById(1L).get(), bbsteps, bbingredients, bbTitle, bbDescription, 8, 2, Builder.createImage("https://www.brooot.de/wp-content/uploads/sites/21/2022/02/Schnelles-5-Stunden-Bierbrot.jpg"), Duration.ofHours(1).plusMinutes(15));	
 		recipeRepository.save(BierBrot); 
-		
+		 
 	}
 
 }
