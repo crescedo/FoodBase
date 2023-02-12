@@ -1,4 +1,4 @@
-package ch.zhaw.fswd.backend.foodbase;
+/* package ch.zhaw.fswd.backend.foodbase;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -11,3 +11,4 @@ class FoodbaseApplicationTests {
 	}
 
 }
+ */

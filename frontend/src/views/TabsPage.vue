@@ -12,7 +12,7 @@
             <ion-icon :icon="heart" color="danger"/>
             <ion-label>Favoriten</ion-label>
           </ion-tab-button>
-          <ion-tab-button tab="tab3" href="/tabs/cookingbook">
+          <ion-tab-button tab="tab3" href="/tabs/searchrecipe">
             <ion-icon :icon="book" color="warning"/>
             <ion-label>Kochbuch</ion-label>
           </ion-tab-button>

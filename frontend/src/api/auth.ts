@@ -17,3 +17,17 @@ export async function getToken(username: string, password: string): Promise<User
         return <any>error;
     }
 }
+export async function refreshToken(username: string, password: string): Promise<UserAuthResponse> {
+    const config = {
+        headers: {
+            'Authorization': 'BASIC ' + btoa(username + ":" + password)
+        },
+        withCredentials: true
+    }
+    try {
+        const response = await axios.get(API_ROOT + '/auth/refresh', config);
+        return response.data;
+    } catch (error) {
+        return <any>error;
+    }
+}

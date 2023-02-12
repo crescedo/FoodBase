@@ -42,7 +42,7 @@
         <br />
         <ion-row>
           <ion-col>
-            <ion-searchbar :search-icon="searchCircle" placeholder="Rezept suchen" class="scolor"></ion-searchbar>
+            <ion-searchbar :search-icon="searchCircle" placeholder="Rezept suchen" class="scolor"  v-model="title" @ion-change="getRecipesByTitle"></ion-searchbar>
           </ion-col>
         </ion-row>
         <br />
@@ -68,6 +68,7 @@
 import { defineComponent } from "vue";
 import { searchCircle } from 'ionicons/icons';
 import { add } from 'ionicons/icons';
+import { useRecipes } from "@/composables/useRecipes";
 
 import {
   IonFabButton, 
@@ -92,6 +93,9 @@ import {
   IonRow,
   IonTabButton,
 } from "@ionic/vue";
+
+const {recipes,getRecipesByTitle,title} =useRecipes();
+
 
 
 </script>

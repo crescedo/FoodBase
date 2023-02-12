@@ -1,18 +1,26 @@
 import { createRouter, createWebHistory } from '@ionic/vue-router';
 import { RouteRecordRaw } from 'vue-router';
-import CookingBook from '../views/CookingBook.vue'
-import HomeScreen from '../views/HomeScreen.vue'
-import LoginScreen from '../views/LoginScreen.vue'
-import MyFavorites from '../views/MyFavorites.vue'
-import TabsPage from '../views/TabsPage.vue'
-import UserAccount from '../views/UserAccount.vue'
-
+import CookingBook from '../views/CookingBook.vue';
+import HomeScreen from '../views/HomeScreen.vue';
+import Login from '../views/Login.vue';
+import MyFavorites from '../views/MyFavorites.vue';
+import TabsPage from '../views/TabsPage.vue';
+import UserAccount from '../views/UserAccount.vue';
+import SignUp from '../views/SignUp.vue';
+import RecipeDetail from '../views/RecipeDetail.vue'
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    redirect: '/tabs/homescreen'
+    redirect: '/login'
   },
-
+  {
+    path: '/login',
+    component: Login,
+  },
+  {
+    path: '/register',
+    component: SignUp,
+  },
   {
     path: '/tabs/',
     component: TabsPage,
@@ -31,7 +39,7 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import('@/views/MyFavorites.vue')
       },
       {
-        path: 'cookingbook',
+        path: 'searchrecipe',
         component: () => import('@/views/CookingBook.vue')
       }
       ,
@@ -42,21 +50,20 @@ const routes: Array<RouteRecordRaw> = [
       ,
       {
         path: 'loginscreen',
-        component: () => import('@/views/LoginScreen.vue')
+        component: () => import('@/views/Login.vue')
       },
       {
         path: 'filterrecipe',
-        component: () => import('@/views/FilterRecipe.vue')
+        component: () => import('@/views/FilterRecipe.vue'),
+        
       }
-      ,
-      {
-        path: 'recipeDetail',
-        component: () => import('@/views/RecipeDetail.vue')
-      }
-      ,
-      {
-        path: 'loginscreen',
-        component: () => import('@/views/LoginScreen.vue')
+            
+      ,{
+        name:'recipeDetail',
+        props: true,
+        path:'recipes/:id?',
+        component:RecipeDetail,
+        
       }
 
 

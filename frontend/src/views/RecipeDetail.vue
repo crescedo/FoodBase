@@ -6,109 +6,114 @@
           <ion-back-button></ion-back-button>
         </ion-buttons>
         <ion-title>
-          Älplermagarone
-          <!-- {{ recipe.title }} -->
+          RECIPE: {{ recipe.title }}
+
         </ion-title>
       </ion-toolbar>
     </ion-header>
     <ion-content :fullscreen="true">
       <ion-header collapse="condense"> </ion-header>
-      <ion-grid>
-        <ion-row>
-          <ion-col>
-            <ion-img src="assets/Pictures/Repezt1.jpg" alt="FoodBase"></ion-img>
-          </ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col>
-            <ion-icon :icon="time" /> 30 Min
-            <!-- {{       recipe.cookingTime    }} -->
-          </ion-col>
-          <ion-col>
-            <ion-icon :icon="barbell" /> einfach
-            <!-- {{ recipe.difficulty }} -->
-          </ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col>
-            Kategorie>
-            <!-- {{ recipe.category }} -->
-          </ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col>
-            Anzahl Personen: <ion-icon :icon="person" color="medium"></ion-icon>
-            <!-- {{ recipe.servings }} -->
-            <ion-list>
-              Das benötigst du:
-              <ion-grid>
-                <!--v-for="IngredientQuantity in recipe" :key="recipe.id" // Damit alle Zutaten ausgelesen werden-->
-                <ion-row>
-                  <ion-col>
-                    <!-- {{ IngredientQuantity.quantity + IngredientQuantity.measure }} -->
-                    1 dl
-                  </ion-col>
-                  <ion-col>
-                    <!-- {{ IngredientQuantity.ingredient }} -->
-                    Milch
-                  </ion-col>
-                </ion-row>
-                <ion-row> <!-- Zeile 56 - 67  löschen, da mit v-for alle zustaten ausgelesen werden -->
-                  <ion-col>1 EL</ion-col>
-                  <ion-col>Zucker</ion-col>
-                </ion-row>
-                <ion-row>
-                  <ion-col>200 gr.</ion-col>
-                  <ion-col>Mehl</ion-col>
-                </ion-row>
-                <ion-row>
-                  <ion-col>1 Pck.</ion-col>
-                  <ion-col>Trockenhefe</ion-col>
-                </ion-row>
-              </ion-grid>
-            </ion-list>
-          </ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col>
 
-            Vorgehen:
+      <ion-card>
+        <img :alt="recipe.title + ' thumbnail'" :src="recipe.thumbnailUrl?.url" />
+        <ion-card-header>
 
-            <ion-list lines="full">
-              <!--v-for="cookingSteps in recipe" :key="recipe.id" // Damit alle Steps ausgelesen werden-->
-              <ion-item>
-                <ion-label>
-                  <ion-col>
-                    Step 1
-                    <!-- {{ steps.stepOrder }} -->
-                  </ion-col>
-                  <ion-col>
-                    Titel
-                    <!-- {{ steps.title }} -->
-                  </ion-col>
-                </ion-label>
-              </ion-item>
-              <ion-item>
-                <ion-label>
-                  content
-                  <!-- {{ steps.title }} -->
-                </ion-label         >
-              </ion-item>
-              <ion-item>
-                <ion-label>
-                  images<!-- {{ steps.imapges }} -->
-                </ion-label>
-              </ion-item>
-            </ion-list>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
+          <ion-card-subtitle>
+            Category: <i>{{ recipe.category?.name }}</i>
+            <br>
+            Published by: <i>{{ recipe.creator?.loginInfo?.loginName }}</i>
+            <br>
+            Cooking time: <i>{{ Number(recipe.isoString?.match(/(\d+)H/)?.[1] || 0) }} hour {{
+              Number(recipe.isoString?.match(/(\d+)M/)?.[1] || 0)
+            }} minutes</i>
+            <br>
+            difficulty: <ion-icon v-for="n in recipe.difficulty" :key="n" :icon="star" />
+          </ion-card-subtitle>
+          <ion-card-title class="ion-text-left">
+            {{ recipe.title }}
+          </ion-card-title>
+          <ion-item>
+
+            <ion-grid >
+              <ion-row class="ion-text-left">
+                <ion-text >{{ recipe.descriptionShort }}</ion-text>
+              </ion-row>
+              <ion-row >
+               
+                <ion-col size="6" class="ion-text-center" >
+                  <ion-button expand="block" color="danger" @click ="addToFavorites(recipe.id!)">
+                  <ion-icon  slot="icon-only" :icon="heart"/>
+                </ion-button>
+                </ion-col>
+                <ion-col  size="6" class="ion-text-center" >
+                  <ion-button expand="block" color="primary">
+                  <ion-icon  slot="icon-only" :icon="add"/>
+                </ion-button>
+                </ion-col>
+                
+              </ion-row>
+            </ion-grid>
+          </ion-item>
+
+        </ion-card-header>
+
+        <ion-card-content>
+          <ion-list>
+            <IonListHeader>
+              <IonLabel>Ingredients:</IonLabel>
+            </IonListHeader>
+            <ion-item v-for="ingredient in recipe.ingredients" :key="ingredient.id">
+              {{ ingredient.quantity }} - {{ ingredient.ingredient?.name }}
+            </ion-item>
+          </ion-list>
+          <ion-list>
+            <ion-list-header>
+              <ion-label>Preparation:</ion-label>
+            </ion-list-header>
+            <ion-card v-for="step in recipe.cookingSteps" :key="step.id">
+
+              <ion-card-header>
+                <ion-card-subtitle>
+                  {{ step.stepOrder }} - {{ step.title }}
+                </ion-card-subtitle>
+                <ion-text>
+                  {{ step.content }}
+                </ion-text>
+              </ion-card-header>
+
+              <ion-card-content>
+                <ion-list>
+                  <ion-item v-for="image in step.images" :key="image.id">
+                    <ion-img :src="image.url"></ion-img>
+                    <br>
+                  </ion-item></ion-list>
+              </ion-card-content>
+
+
+            </ion-card>
+
+
+          </ion-list>
+
+        </ion-card-content>
+      </ion-card>
+
+
+
+
+
+
+
+
+
+
+
     </ion-content>
   </ion-page>
 </template>
 
 <script setup lang="ts">
-import { time, barbell, filter, person } from "ionicons/icons";
+import { time, barbell, filter, person, card, text, star, heart, add } from "ionicons/icons";
 import {
   IonIcon,
   IonSearchbar,
@@ -117,6 +122,8 @@ import {
   IonGrid,
   IonRow,
   IonButton,
+  IonItemDivider,
+  IonText,
   IonTitle,
   IonToolbar,
   IonBackButton,
@@ -126,12 +133,34 @@ import {
   IonLabel,
   IonItem,
   IonList,
+  IonListHeader,
   IonContent,
+  IonCard,
+  IonCardContent,
+  IonCardHeader,
+  IonCardTitle,
+  IonCardSubtitle
 } from "@ionic/vue";
+
 import { defineComponent } from "vue";
 import { searchCircle } from "ionicons/icons";
+import { useRoute } from "vue-router";
+import { useRecipeDetail } from "@/composables/useRecipeDetail";
+import { useUser } from "@/composables/useUser";
+import RecipeView from "@/components/RecipeView.vue";
+
+const{addToFavorites}=useUser();
+
+const { recipe, recipe_id, onMount } = useRecipeDetail();
+//console.log('hello')
+const route = useRoute();
+recipe_id.value = parseInt(route.params.id.toString());
+
 
 const cookingBook = "/tabs/cookingbook";
 </script>
 <style scoped>
+.scolor {
+  --ion-background-color: #ffffff;
+}
 </style>
