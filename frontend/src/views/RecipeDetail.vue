@@ -42,17 +42,17 @@
 
                 <ion-col size="6" class="ion-text-center">
 
-                  <ion-button expand="block" color="danger" v-if="!isFavorite(recipe.id!)"
+                  <ion-button expand="block" color="success" v-if="!isFavorite(recipe.id!)"
                     @click="addToFavorites(recipe.id!); setOpen(true)">
                     <ion-icon slot="icon-only" :icon='heart' />
 
                   </ion-button>
-                  <ion-alert :is-open="isOpenRef" header="Alert" sub-header="Important message"
-                    message="Das Rezept {{ recipe.title }} wurde zu den favoriten hinzugefügt" :buttons="['OK']"
+                  <ion-alert :is-open="isOpenRef" :header="recipe.title" 
+                    message= "wurde zu den Favoriten hinzugefügt" :buttons="['OK']"
                     @didDismiss="setOpen(false); reloadPage()">
                   </ion-alert>
 
-                  <ion-button expand="block" color="success" v-if="isFavorite(recipe.id!)" @click="removeRecipeFromFavorites(recipe.id!);reloadPage()">
+                  <ion-button expand="block" color="danger" v-if="isFavorite(recipe.id!)" @click="removeRecipeFromFavorites(recipe.id!);reloadPage()">
                     <ion-icon slot="icon-only" :icon='heartOutline' />
                   </ion-button>
 
