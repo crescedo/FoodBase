@@ -175,16 +175,116 @@ public class FoodbaseApplication implements CommandLineRunner {
 			);
 	
 		List<IngredientQuantity> ingredients =  Arrays.asList(
-			Builder.createIngredientQuantitiy(ingredientRepository.findById(15L).get(), measureRepository.findById(3L).get(), 400D),
-			Builder.createIngredientQuantitiy(ingredientRepository.findById(16L).get(), measureRepository.findById(3L).get(), 300D),
-			Builder.createIngredientQuantitiy(ingredientRepository.findById(18L).get(), measureRepository.findById(3L).get(), 50D),
-			Builder.createIngredientQuantitiy(ingredientRepository.findById(19L).get(), measureRepository.findById(3L).get(),50D),
-			Builder.createIngredientQuantitiy(ingredientRepository.findById(20L).get(), measureRepository.findById(2L).get(), 1.5D)
+			Builder.createIngredientQuantitiy(ingredientRepository.findById(1L).get(), measureRepository.findById(3L).get(), 400D),
+			Builder.createIngredientQuantitiy(ingredientRepository.findById(2L).get(), measureRepository.findById(3L).get(), 300D),
+			Builder.createIngredientQuantitiy(ingredientRepository.findById(3L).get(), measureRepository.findById(2L).get(), 1D),
+			Builder.createIngredientQuantitiy(ingredientRepository.findById(4L).get(), measureRepository.findById(3L).get(),50D),
+			Builder.createIngredientQuantitiy(ingredientRepository.findById(5L).get(), measureRepository.findById(2L).get(), 1.5D),
+			Builder.createIngredientQuantitiy(ingredientRepository.findById(6L).get(), measureRepository.findById(8L).get(), 1.5D)
 			);
 
-		Recipe kürbisBrot =Builder.createRecipe(userOne, categoryRepository.findById(2L).get(), steps, ingredients, kürbisBrotTitle, kürbisBrotDescription, 1, 1, Builder.createImage("https://www.eatbetter.de/sites/eatbetter.de/files/styles/full_width_tablet_4_3/public/2020-09/kuerbisbrot_1.jpg?h=4521fff0&itok=DP5-5sqK"), Duration.ofHours(3).plusMinutes(30));	
+		Recipe kürbisBrot =Builder.createRecipe(userOne, categoryRepository.findById(2L).get(), steps, ingredients, kürbisBrotTitle, kürbisBrotDescription, 1, 2, Builder.createImage("https://www.eatbetter.de/sites/eatbetter.de/files/styles/full_width_tablet_4_3/public/2020-09/kuerbisbrot_1.jpg?h=4521fff0&itok=DP5-5sqK"), Duration.ofHours(3).plusMinutes(30));	
 		recipeRepository.save(kürbisBrot);
 
+		//Kürbissuppe
+		String kürbisSuppeTitle = "Kürbissuppe";
+		String kürbisSuppeDescription = "Für den kühlen Herbst oder Winter.";
+		String kürbisSuppeFirstStepTitle = "Kürbis dünsten";
+		String kürbisSuppefirstStepContent = "Zwiebel und Curry in Butter andünsten. Kürbis, Rüebli und Kartoffel dazugeben, mitdünsten. Bouillon beifügen, aufkochen, würzen. Zugedeckt 20-25 Minuten köcheln.";
+		
+		List<Image> kSimages =  Arrays.asList(
+			Builder.createImage("https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.gutekueche.de%2Feinfaches-kuerbisgemuese-rezept-14577&psig=AOvVaw0vM8qaW8vrnZUaPQXJNGf7&ust=1676297937629000&source=images&cd=vfe&ved=0CBAQjRxqFwoTCIjh6MmWkP0CFQAAAAAdAAAAABAE")
+			);
+		
+		List<Step> kSsteps =  Arrays.asList(
+			Builder.createStep(kürbisSuppeFirstStepTitle,  kürbisSuppefirstStepContent,kSimages,1)
+			);
+	
+		List<IngredientQuantity> kSingredients =  Arrays.asList(
+			Builder.createIngredientQuantitiy(ingredientRepository.findById(7L).get(), measureRepository.findById(7L).get(), 1D),
+			Builder.createIngredientQuantitiy(ingredientRepository.findById(1L).get(), measureRepository.findById(3L).get(), 400D),
+			Builder.createIngredientQuantitiy(ingredientRepository.findById(6L).get(), measureRepository.findById(8L).get(), 0.8D),
+			Builder.createIngredientQuantitiy(ingredientRepository.findById(8L).get(), measureRepository.findById(1L).get(),1D),
+			Builder.createIngredientQuantitiy(ingredientRepository.findById(9L).get(), measureRepository.findById(3L).get(), 180D)
+			);
+
+		Recipe kürbisSuppe =Builder.createRecipe(userOne, categoryRepository.findById(3L).get(), kSsteps, kSingredients, kürbisSuppeTitle, kürbisSuppeDescription, 1, 1, Builder.createImage("https://res.cloudinary.com/swissmilk/image/fetch/ar_16:10,g_auto,w_720,c_fill,f_auto,q_auto,fl_progressive/https://api.swissmilk.ch/wp-content/uploads/2019/06/kuerbissuppe-2560x1707.jpg"), Duration.ofHours(1).plusMinutes(40));	
+		recipeRepository.save(kürbisSuppe); 
+
+		//Valentinsdessert
+		String vdTitle = "Valentinsdessert";
+		String vdDescription = "Zuckersüss und nur für die Liebsten.";
+		String vdFirstStepTitle = "Biscuit";
+		String vdFirstStepContent = "Butterguetzli und Amaretti in einen Tiefkühlbeutel geben, mit dem Wallholz fein zerdrücken oder mit dem Cutter mahlen. Mit Butter mischen, auf den vorbereiteten Formenboden verteilen, gut andrücken, kühl stellen.";
+		String vdSecondStepTitle = "Mascarpone-Quark-Masse";
+		String vdSecondStepContent = "Mascarpone, Magerquark und Rahmhalter gut verrühren. Zitronenschale und -saft dazugeben. Alle Zuckerarten miteinander vermischen, ebenfalls dazugeben. Bis zur Verwendung kühl stellen.";
+		
+		List<Image> vDimages =  Arrays.asList(
+			Builder.createImage("https://www.br.de/radio/bayern1/kuchen-ohne-spezialbackform-104~_v-img__16__9__xl_-d31c35f8186ebeb80b0cd843a7c267a0e0c81647.jpg?version=4bff4")
+			);
+		
+		List<Step> vDsteps =  Arrays.asList(
+			Builder.createStep(vdFirstStepTitle,  vdFirstStepContent,vDimages,1)
+			);
+	
+		List<IngredientQuantity> vDingredients =  Arrays.asList(
+			Builder.createIngredientQuantitiy(ingredientRepository.findById(10L).get(), measureRepository.findById(3L).get(), 100D),
+			Builder.createIngredientQuantitiy(ingredientRepository.findById(11L).get(), measureRepository.findById(3L).get(), 100D),
+			Builder.createIngredientQuantitiy(ingredientRepository.findById(12L).get(), measureRepository.findById(7L).get(), 1D),
+			Builder.createIngredientQuantitiy(ingredientRepository.findById(13L).get(), measureRepository.findById(1L).get(),4D),
+			Builder.createIngredientQuantitiy(ingredientRepository.findById(9L).get(), measureRepository.findById(3L).get(), 500D)
+			);
+
+		Recipe Valentinsdessert =Builder.createRecipe(userOne, categoryRepository.findById(5L).get(), vDsteps, vDingredients, vdTitle, vdDescription, 12, 3, Builder.createImage("https://res.cloudinary.com/swissmilk/image/fetch/ar_16:10,g_auto,w_720,c_fill,f_auto,q_auto,fl_progressive/https://api.swissmilk.ch/wp-content/uploads/2022/12/SM2022_DIVE_89_quarktorte-mit-beeren-ohne-backen-2560x1708.jpg"), Duration.ofHours(1).plusMinutes(15));	
+		recipeRepository.save(Valentinsdessert);
+
+		//Zmorge Bagel
+		String zbTitle = "Zmorge Bagel";
+		String zbDescription = "Kohlenhydrate zum Frühstück";
+		String zbFirstStepTitle = "Teig";
+		String zbFirstStepContent = "Mehl und alle Zutaten bis und mit Salz in der Schüssel der Küchenmaschine mischen. Milchwasser dazugiessen, Honig und Mandelmus beigeben, mit dem Knethaken der Küchenmaschine ca. 5 Min. zu einem weichen, glatten Teig kneten. Zugedeckt bei Raumtemperatur ca. 2 Std. aufgehen lassen.";
+		
+		List<Image> zbimages =  Arrays.asList(
+			Builder.createImage("https://images.ichkoche.at/data/image/variations/496x384/2/brotteig-grundrezept-mit-hefe-img-19661.jpg")
+			);
+		
+		List<Step> zbsteps =  Arrays.asList(
+			Builder.createStep(zbFirstStepTitle,  zbFirstStepContent,zbimages,1)
+			);
+	
+		List<IngredientQuantity> zbingredients =  Arrays.asList(
+			Builder.createIngredientQuantitiy(ingredientRepository.findById(2L).get(), measureRepository.findById(3L).get(), 400D),
+			Builder.createIngredientQuantitiy(ingredientRepository.findById(3L).get(), measureRepository.findById(1L).get(), 1D),
+			Builder.createIngredientQuantitiy(ingredientRepository.findById(4L).get(), measureRepository.findById(1L).get(), 2D),
+			Builder.createIngredientQuantitiy(ingredientRepository.findById(5L).get(), measureRepository.findById(3L).get(),20D)
+			);
+
+		Recipe ZmorgeBagel =Builder.createRecipe(userOne, categoryRepository.findById(1L).get(), zbsteps, zbingredients, zbTitle, zbDescription, 8, 1, Builder.createImage("https://cdn.gutekueche.de/upload/rezept/2140/vollkorn-bagel.jpg"), Duration.ofHours(2).plusMinutes(30));	
+		recipeRepository.save(ZmorgeBagel); 
+
+		//Bierbrot
+		String bbTitle = "Bierbrot";
+		String bbDescription = "Klingt gut für den Feierabend?";
+		String bbFirstStepTitle = "Teig";
+		String bbFirstStepContent = "Mehle, Backpulver und Salz in einer Schüssel mischen. Bier und Joghurt dazugiessen, mit einer Kelle gut mischen, bis ein flüssiger, weicher Teig entsteht. Eine zweite Schüssel mit einem rund zugeschnittenen Backpapier (ca. 30 cm Ø) auslegen, Teig daraufgeben.";
+		
+		List<Image> bbimages =  Arrays.asList(
+			Builder.createImage("https://christopherlangbrotsommelier.files.wordpress.com/2022/02/den-teig-richtig-kneten-christopher-lang.jpg?w=640")
+			);
+		
+		List<Step> bbsteps =  Arrays.asList(
+			Builder.createStep(bbFirstStepTitle,  bbFirstStepContent,bbimages,1)
+			);
+	
+		List<IngredientQuantity> bbingredients =  Arrays.asList(
+			Builder.createIngredientQuantitiy(ingredientRepository.findById(2L).get(), measureRepository.findById(3L).get(), 400D),
+			Builder.createIngredientQuantitiy(ingredientRepository.findById(3L).get(), measureRepository.findById(1L).get(), 1D),
+			Builder.createIngredientQuantitiy(ingredientRepository.findById(14L).get(), measureRepository.findById(8L).get(), 0.4D),
+			Builder.createIngredientQuantitiy(ingredientRepository.findById(5L).get(), measureRepository.findById(3L).get(),20D)
+			);
+
+		Recipe BierBrot =Builder.createRecipe(userOne, categoryRepository.findById(1L).get(), bbsteps, bbingredients, bbTitle, bbDescription, 8, 2, Builder.createImage("https://www.brooot.de/wp-content/uploads/sites/21/2022/02/Schnelles-5-Stunden-Bierbrot.jpg"), Duration.ofHours(1).plusMinutes(15));	
+		recipeRepository.save(BierBrot); 
 		
 	}
 

@@ -28,22 +28,23 @@
 
         <ion-img :src="recipe.thumbnailUrl?.url"> </ion-img>
         <ion-card-header>
-          <ion-card-subtitle>
-            Category: <i>{{ recipe.category?.name }}</i>
-            <br>
-            Published by: <i>{{ recipe.creator?.loginInfo?.loginName }}</i>
-            <br>
-            Cooking time: <i>{{ Number(recipe.isoString?.match(/(\d+)H/)?.[1] || 0) }} hour {{
-              Number(recipe.isoString?.match(/(\d+)M/)?.[1] || 0)
-            }} minutes</i>
-            <br>
-            difficulty: <ion-icon v-for="n in recipe.difficulty" :key="n" :icon="star" />
-          </ion-card-subtitle>
           <ion-card-title>
             {{
   recipe.title
             }}
           </ion-card-title>
+          <ion-card-subtitle>
+            Kategorie: <i>{{ recipe.category?.name }}</i>
+            <br>
+            Erstellt von: <i>{{ recipe.creator?.loginInfo?.loginName }}</i>
+            <br>
+            Vorbereitungszeit: <i>{{ Number(recipe.isoString?.match(/(\d+)H/)?.[1] || 0) }} h {{
+              Number(recipe.isoString?.match(/(\d+)M/)?.[1] || 0)
+            }} min</i>
+            <br>
+            Schwierigkeit: <ion-icon v-for="n in recipe.difficulty" :key="n" :icon="star" />
+          </ion-card-subtitle>
+          
         </ion-card-header>
         <ion-card-content> </ion-card-content>
       </ion-card>

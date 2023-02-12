@@ -6,7 +6,7 @@
           <ion-back-button></ion-back-button>
         </ion-buttons>
         <ion-title>
-          RECIPE: {{ recipe.title }}
+          Rezept: {{ recipe.title }}
 
         </ion-title>
       </ion-toolbar>
@@ -17,21 +17,22 @@
       <ion-card>
         <img :alt="recipe.title + ' thumbnail'" :src="recipe.thumbnailUrl?.url" />
         <ion-card-header>
-
-          <ion-card-subtitle>
-            Category: <i>{{ recipe.category?.name }}</i>
-            <br>
-            Published by: <i>{{ recipe.creator?.loginInfo?.loginName }}</i>
-            <br>
-            Cooking time: <i>{{ Number(recipe.isoString?.match(/(\d+)H/)?.[1] || 0) }} hour {{
-              Number(recipe.isoString?.match(/(\d+)M/)?.[1] || 0)
-            }} minutes</i>
-            <br>
-            difficulty: <ion-icon v-for="n in recipe.difficulty" :key="n" :icon="star" />
-          </ion-card-subtitle>
           <ion-card-title class="ion-text-left">
             {{ recipe.title }}
           </ion-card-title>
+
+          <ion-card-subtitle>
+            Kategorie: <i>{{ recipe.category?.name }}</i>
+            <br>
+            Erstellt von: <i>{{ recipe.creator?.loginInfo?.loginName }}</i>
+            <br>
+            Vorbereitungszeit: <i>{{ Number(recipe.isoString?.match(/(\d+)H/)?.[1] || 0) }} h {{
+              Number(recipe.isoString?.match(/(\d+)M/)?.[1] || 0)
+            }} min</i>
+            <br>
+            Schwierigkeit: <ion-icon v-for="n in recipe.difficulty" :key="n" :icon="star" />
+          </ion-card-subtitle>
+          
           <ion-item>
 
             <ion-grid>
@@ -73,16 +74,16 @@
 
         <ion-card-content>
           <ion-list>
-            <IonListHeader>
-              <IonLabel>Ingredients:</IonLabel>
-            </IonListHeader>
-            <ion-item v-for="ingredient in recipe.ingredients" :key="ingredient.id">
-              {{ ingredient.quantity }} - {{ ingredient.ingredient?.name }}
+            <ion-item>
+            Zutaten:
             </ion-item>
+            <ion-card-subtitle v-for="ingredient in recipe.ingredients" :key="ingredient.id">
+              {{ ingredient.quantity }} - {{ ingredient.ingredient?.name }}
+            </ion-card-subtitle>
           </ion-list>
           <ion-list>
             <ion-list-header>
-              <ion-label>Preparation:</ion-label>
+              <ion-item>Zubereitung:</ion-item>
             </ion-list-header>
             <ion-card v-for="step in recipe.cookingSteps" :key="step.id">
 
