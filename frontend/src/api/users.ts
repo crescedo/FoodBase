@@ -40,3 +40,29 @@ export async function updateFavorites(recipe: Recipe): Promise<any>   {
         return error;   
     }
 }
+export async function getUsersFavorites():Promise<Recipe[]>{
+
+    const config = {        
+        withCredentials: true
+    }
+    try {
+        const response = await axios.get(API_ROOT + '/api/users/favorites',  config);
+        return response.data;
+    } catch (error) {
+        return <any> error;   
+    }
+}
+export async function removeFromFavorites(id: number): Promise<any>   {
+    const config = {        
+        withCredentials: true,
+        params: {
+            recipeId: id
+        }
+    }
+    try {
+        const response = await axios.delete(API_ROOT + '/api/users/favorites', config);
+        return response.data;
+    } catch (error) {
+        return error;   
+    }
+}

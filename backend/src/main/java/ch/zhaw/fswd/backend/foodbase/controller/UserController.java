@@ -9,6 +9,8 @@ import ch.zhaw.fswd.backend.foodbase.entity.Role;
 import ch.zhaw.fswd.backend.foodbase.entity.User;
 import ch.zhaw.fswd.backend.foodbase.entity.UserRepository;
 import ch.zhaw.fswd.backend.foodbase.entity.Recipe;
+
+import java.util.ArrayList;
 import java.util.List;
 
 import java.util.Optional;
@@ -36,14 +38,46 @@ public class UserController {
 
             Optional<User> user = userRepository.findById(userId.get());
             if (user.isPresent()) {
-                
+
                 List<Long> favorites = userRepository.getFavoritesById(user.get().getId());
-               
+
                 if (!favorites.contains(recipe.getId())) {
                     user.get().getFavorites().add(recipe);
                     userRepository.save(user.get());
                 }
             }
+        }
+    }
+
+    public List<Recipe> getFavorites(String owner) {
+
+        Optional<Long> userId = userRepository.findUserByLoginName(owner);
+        if (userId.isPresent()) {
+
+            List<Recipe> favorites = userRepository.getFavoritesByUserId(userId.get());
+            return favorites;
+        }
+        return new ArrayList<Recipe>();
+    }
+
+    public void removeFavorite(Long recipeId, String owner) {
+
+        Optional<Long> userId = userRepository.findUserByLoginName(owner);
+        if (userId.isPresent()) {
+            User user = userRepository.findById(userId.get()).get();
+            List<Recipe> favorites = user.getFavorites();
+            Recipe recipeToRemove = null;
+            for (Recipe recipe : favorites) {
+                if (recipe.getId().equals(recipeId)) {
+                    recipeToRemove = recipe;
+                    break;
+                }
+            }
+            if (recipeToRemove != null) {
+                favorites.remove(recipeToRemove);
+                userRepository.save(user);
+            }
+
         }
     }
 
