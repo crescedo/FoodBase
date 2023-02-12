@@ -34,23 +34,35 @@
           </ion-card-title>
           <ion-item>
 
-            <ion-grid >
+            <ion-grid>
               <ion-row class="ion-text-left">
-                <ion-text >{{ recipe.descriptionShort }}</ion-text>
+                <ion-text>{{ recipe.descriptionShort }}</ion-text>
               </ion-row>
-              <ion-row >
-               
-                <ion-col size="6" class="ion-text-center" >
-                  <ion-button expand="block" color="danger" @click ="addToFavorites(recipe.id!)">
-                  <ion-icon  slot="icon-only" :icon="heart"/>
-                </ion-button>
+              <ion-row>
+
+                <ion-col size="6" class="ion-text-center">
+
+                  <ion-button expand="block" color="success" v-if="!isFavorite(recipe.id!)"
+                    @click="addToFavorites(recipe.id!); setOpen(true)">
+                    <ion-icon slot="icon-only" :icon='heart' />
+
+                  </ion-button>
+                  <ion-alert :is-open="isOpenRef" :header="recipe.title" 
+                    message= "wurde zu den Favoriten hinzugefügt" :buttons="['OK']"
+                    @didDismiss="setOpen(false); reloadPage()">
+                  </ion-alert>
+
+                  <ion-button expand="block" color="danger" v-if="isFavorite(recipe.id!)" @click="removeRecipeFromFavorites(recipe.id!);reloadPage()">
+                    <ion-icon slot="icon-only" :icon='heartOutline' />
+                  </ion-button>
+
                 </ion-col>
-                <ion-col  size="6" class="ion-text-center" >
+                <ion-col size="6" class="ion-text-center">
                   <ion-button expand="block" color="primary">
-                  <ion-icon  slot="icon-only" :icon="add"/>
-                </ion-button>
+                    <ion-icon slot="icon-only" :icon="add" />
+                  </ion-button>
                 </ion-col>
-                
+
               </ion-row>
             </ion-grid>
           </ion-item>
@@ -98,23 +110,14 @@
         </ion-card-content>
       </ion-card>
 
-
-
-
-
-
-
-
-
-
-
     </ion-content>
   </ion-page>
 </template>
 
 <script setup lang="ts">
-import { time, barbell, filter, person, card, text, star, heart, add } from "ionicons/icons";
+import { time, barbell, filter, person, card, text, star, heart, add, heartCircleOutline, heartOutline } from "ionicons/icons";
 import {
+  IonAlert,
   IonIcon,
   IonSearchbar,
   IonImg,
@@ -142,18 +145,35 @@ import {
   IonCardSubtitle
 } from "@ionic/vue";
 
-import { defineComponent } from "vue";
+import { defineComponent, ref } from "vue";
 import { searchCircle } from "ionicons/icons";
 import { useRoute } from "vue-router";
 import { useRecipeDetail } from "@/composables/useRecipeDetail";
 import { useUser } from "@/composables/useUser";
 import RecipeView from "@/components/RecipeView.vue";
+import router from "@/router";
 
-const{addToFavorites}=useUser();
+const { addToFavorites } = useUser();
 
-const { recipe, recipe_id, onMount } = useRecipeDetail();
-//console.log('hello')
+const { recipe, recipe_id } = useRecipeDetail();
 const route = useRoute();
+const { myFavorites, onMounted, removeRecipeFromFavorites } = useUser();
+
+function isFavorite(id: number): boolean {
+  for (const f of myFavorites.value) {
+    if (f && f.id === id) {
+      return true;
+    }
+  }
+  return false;
+}
+const isOpenRef = ref(false);
+const setOpen = (state: boolean) => (isOpenRef.value = state);
+function reloadPage() {
+  // router.push('/tabs/searchrecipe');
+  location.reload();
+}
+
 recipe_id.value = parseInt(route.params.id.toString());
 
 

@@ -1,6 +1,6 @@
 import { onMounted, ref } from "vue";
 import { LoginInfo } from "@/model/loginInfo";
-import { addNewUser, getMySecret, updateFavorites } from "@/api/users";
+import { addNewUser, getMySecret, updateFavorites,getUsersFavorites,removeFromFavorites } from "@/api/users";
 import router from "@/router";
 import { UserAuthResponse } from "@/model/userAuthResponse";
 import { Recipe } from "@/model/recipe";
@@ -15,6 +15,8 @@ const me = ref<UserAuthResponse>({
     roles: [],
     expiresAt: new Date
 });
+const myFavorites=ref<Array<Recipe>>(<Recipe[]>[])
+
 export function useUser() {
     const addUser = async () => {
         try {
@@ -36,11 +38,32 @@ export function useUser() {
         } catch (error){console.log(error); }
     }
 
+    const removeRecipeFromFavorites = async (recipeId:number) => {
+        try {
+            
+            await removeFromFavorites(recipeId);
+            
+        } catch (error){console.log(error); }
+    }
+
+    const getFavorites = async () => {
+        try {
+            
+            myFavorites.value=await getUsersFavorites();
+                    console.log (myFavorites.value);    
+        } catch (error){console.log(error); }
+    }
+
+    onMounted(getFavorites)
+
     return {
         username,
         password,
         addUser,
         addToFavorites,
+        myFavorites,
+        onMounted,
+        removeRecipeFromFavorites
 
     }
 }
