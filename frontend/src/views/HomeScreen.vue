@@ -16,16 +16,14 @@
         <ion-row>
           <ion-col size-xl="3">
             <br />
-            <br />
-            <h2>
+            <h1>
           Willkommen bei 
-            </h2>
+            </h1>
         </ion-col>
         </ion-row>
       </ion-grid>
       <ion-grid>
         <ion-row>
-          <br />
           <ion-col>
             <ion-img
               src="assets/Pictures/FoodBase.jpg"
@@ -37,15 +35,12 @@
         </ion-row>
       </ion-grid>
       <ion-grid>
-
+      <ion-row class="ion-padding-horizontal">Finde leckere Rezepte entweder im Kochbuch oder unter deinen Favoriten</ion-row>
         <br />
+                  <br />
+        <ion-row class="ion-padding-horizontal">Nicht das richtige gefunden, dann hier eines erstellen</ion-row>
         <br />
-        <ion-row>
-          <ion-col>
-            <ion-searchbar :search-icon="searchCircle" placeholder="Rezept suchen" class="scolor"  v-model="title" @ion-change="getRecipesByTitle"></ion-searchbar>
-          </ion-col>
-        </ion-row>
-        <br />
+        
       </ion-grid>
 
     <ion-list>
@@ -114,7 +109,7 @@ ion-col {
   }
   .test{
     position: fixed;
-    bottom: 77px;
+    bottom: 69px;
     right: 15px;
   }
 </style>
