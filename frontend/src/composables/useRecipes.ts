@@ -14,17 +14,20 @@ export function useRecipes() {
         }
     }
     const getRecipesByTitle = async () => {
-        
+        if(title.value==="")await getRecipes();
+        else{
             try {
                 recipes.value = await getAllRecipesByTitle(title.value);
+
                 console.log(recipes.value)
             } catch (error) {
                 console.log(error); // FIXME: Errorhandling
             }
+        }
         
     }
 
-    // onMounted(getRecipes);
+    onMounted(getRecipes);
     return {
         getRecipes,
         recipes,
