@@ -50,7 +50,8 @@ export function useUser() {
         try {
             
             myFavorites.value=await getUsersFavorites();
-                    console.log (myFavorites.value);    
+            console.log("users favorites")
+            console.log (myFavorites.value);    
         } catch (error){console.log(error); }
     }
 

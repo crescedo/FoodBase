@@ -1,6 +1,10 @@
 --Kategorien
 INSERT INTO CATEGORY (name) VALUES ('Abendessen')
 INSERT INTO CATEGORY (name) VALUES ('Frühstück')
+INSERT INTO CATEGORY (name) VALUES ('zVieri')
+INSERT INTO CATEGORY (name) VALUES ('zNüni')
+INSERT INTO CATEGORY (name) VALUES ('zMittag')
+INSERT INTO CATEGORY (name) VALUES ('zMittnehmen')
 -- Einheiten
 INSERT INTO MEASURE (name_long,name_short) VALUES ('Esslöffel','EL')
 INSERT INTO MEASURE (name_long,name_short) VALUES ('Teelöffel','TL')

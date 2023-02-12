@@ -153,13 +153,14 @@ import { useUser } from "@/composables/useUser";
 import RecipeView from "@/components/RecipeView.vue";
 import router from "@/router";
 
-const { addToFavorites } = useUser();
+const { addToFavorites, } = useUser();
 
 const { recipe, recipe_id } = useRecipeDetail();
 const route = useRoute();
 const { myFavorites, onMounted, removeRecipeFromFavorites } = useUser();
 
 function isFavorite(id: number): boolean {
+  console.log(id)
   for (const f of myFavorites.value) {
     if (f && f.id === id) {
       return true;

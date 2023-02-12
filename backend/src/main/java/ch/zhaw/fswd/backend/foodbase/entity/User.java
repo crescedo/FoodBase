@@ -1,5 +1,6 @@
 package ch.zhaw.fswd.backend.foodbase.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.annotations.Cascade;

@@ -49,7 +49,7 @@ export async function getUsersFavorites():Promise<Recipe[]>{
         const response = await axios.get(API_ROOT + '/api/users/favorites',  config);
         return response.data;
     } catch (error) {
-        return <any> error;   
+        return  <any>error;
     }
 }
 export async function removeFromFavorites(id: number): Promise<any>   {

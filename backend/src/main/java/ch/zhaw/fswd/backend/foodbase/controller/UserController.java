@@ -40,7 +40,7 @@ public class UserController {
             if (user.isPresent()) {
 
                 List<Long> favorites = userRepository.getFavoritesById(user.get().getId());
-
+                System.out.println(owner + ": adding " + recipe.getId() + " to favorites");
                 if (!favorites.contains(recipe.getId())) {
                     user.get().getFavorites().add(recipe);
                     userRepository.save(user.get());
@@ -50,12 +50,15 @@ public class UserController {
     }
 
     public List<Recipe> getFavorites(String owner) {
+        try {
+            Optional<Long> userId = userRepository.findUserByLoginName(owner);
 
-        Optional<Long> userId = userRepository.findUserByLoginName(owner);
-        if (userId.isPresent()) {
+            if (userId.isPresent()) {
 
-            List<Recipe> favorites = userRepository.getFavoritesByUserId(userId.get());
-            return favorites;
+                List<Recipe> favorites = userRepository.getFavoritesByUserId(userId.get());
+                return favorites;
+            }
+        } catch (Exception e) {
         }
         return new ArrayList<Recipe>();
     }
