@@ -81,4 +81,11 @@ public class UserController {
         }
     }
 
+    public User getUserByName(String principal) {
+        Optional<Long> userId = userRepository.findUserByLoginName(principal);
+        if (userId.isPresent()) {
+            return userRepository.findById(userId.get()).get();
+        }
+        return null;
+    }
 }

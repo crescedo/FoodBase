@@ -118,7 +118,7 @@ public class FoodbaseApplication implements CommandLineRunner {
 		userInfo.setFirstName("Gianni");
 		userInfo.setLastName("Rivera");
 		Image im = new Image();
-		im.setUrl("https://source.unsplash.com/random/200x200?sig=" + random.nextInt(10) +1);
+		im.setUrl("https://i.stack.imgur.com/l60Hf.png");
 		userInfo.setProfilePic(im);
 		userOne.setUserInfo(userInfo);
 		LoginInfo login = new LoginInfo();
@@ -140,7 +140,7 @@ public class FoodbaseApplication implements CommandLineRunner {
 		userTwoInfo.setFirstName("Giampiero");
 		userTwoInfo.setLastName("Mughini");
 		Image imTwo = new Image();
-		imTwo.setUrl("https://source.unsplash.com/random/200x200?sig="+ random.nextInt(10)+1 );
+		imTwo.setUrl("https://i.stack.imgur.com/l60Hf.png");
 		userTwoInfo.setProfilePic(imTwo);
 		userTwo.setUserInfo(userTwoInfo);
 		LoginInfo loginTwo = new LoginInfo();

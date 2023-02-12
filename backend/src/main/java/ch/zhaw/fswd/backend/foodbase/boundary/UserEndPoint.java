@@ -83,5 +83,13 @@ public class UserEndPoint {
 
         userController.removeFavorite(recipeId,principal.getName());
     }
+    @RequestMapping(path="/api/users/me",method=RequestMethod.GET)
+    @PreAuthorize("isAuthenticated() AND hasRole('USER')")
+    public User getUserDetails(Principal principal){
+        User u =userController.getUserByName(principal.getName()); 
+        System.out.println(u.getUserInfo().getLastName());
+       return  u;
+    }
+    
 
 }

@@ -26,6 +26,8 @@
             <br>
             Erstellt von: <i>{{ recipe.creator?.loginInfo?.loginName }}</i>
             <br>
+            Erstellt am: <i>{{ recipe.createdAt!}}</i>
+            <br>
             Vorbereitungszeit: <i>{{ Number(recipe.isoString?.match(/(\d+)H/)?.[1] || 0) }} h {{
               Number(recipe.isoString?.match(/(\d+)M/)?.[1] || 0)
             }} min</i>
@@ -33,7 +35,7 @@
             Schwierigkeit: <ion-icon v-for="n in recipe.difficulty" :key="n" :icon="star" />
           </ion-card-subtitle>
           
-          <ion-item>
+          
 
             <ion-grid>
               <ion-row class="ion-text-left">
@@ -41,44 +43,41 @@
               </ion-row>
               <ion-row>
 
-                <ion-col size="6" class="ion-text-center">
+                <ion-col  >
 
-                  <ion-button expand="block" color="success" v-if="!isFavorite(recipe.id!)"
+                  <ion-button shape="round" expand="block" color="primary" v-if="!isFavorite(recipe.id!)"
                     @click="addToFavorites(recipe.id!); setOpen(true)">
-                    <ion-icon slot="icon-only" :icon='heart' />
-
+                    <ion-icon slot="end" :icon='heart' />
+                    Zu Favoriten hinnzufügen
                   </ion-button>
-
+        
                   <ion-alert :is-open="isOpenRef" :header="recipe.title" 
                     message= "wurde zu den Favoriten hinzugefügt" :buttons="['OK']"
 
                     @didDismiss="setOpen(false); reloadPage()">
                   </ion-alert>
 
-                  <ion-button expand="block" color="danger" v-if="isFavorite(recipe.id!)" @click="removeRecipeFromFavorites(recipe.id!);reloadPage()">
-                    <ion-icon slot="icon-only" :icon='heartOutline' />
+                  <ion-button shape="round" expand="block" color="danger" v-if="isFavorite(recipe.id!)" @click="removeRecipeFromFavorites(recipe.id!);reloadPage()">
+                    <ion-icon slot="end" :icon='heartOutline' />
+                    Aus Favoriten entfernen
                   </ion-button>
 
-                </ion-col>
-                <ion-col size="6" class="ion-text-center">
-                  <ion-button expand="block" color="primary">
-                    <ion-icon slot="icon-only" :icon="add" />
-                  </ion-button>
                 </ion-col>
 
               </ion-row>
             </ion-grid>
-          </ion-item>
+          
 
         </ion-card-header>
 
         <ion-card-content>
           <ion-list>
-            <ion-item>
+            <ion-card-title>
             Zutaten:
-            </ion-item>
+            </ion-card-title>
+            <br>
             <ion-card-subtitle v-for="ingredient in recipe.ingredients" :key="ingredient.id">
-              {{ ingredient.quantity }} - {{ ingredient.ingredient?.name }}
+              {{ ingredient.quantity }} {{ ingredient.measure?.nameShort }} - {{ ingredient.ingredient?.name }}
             </ion-card-subtitle>
           </ion-list>
           <ion-list>
@@ -128,7 +127,7 @@ import {
   IonGrid,
   IonRow,
   IonButton,
-  IonItemDivider,
+  IonPopover,
   IonText,
   IonTitle,
   IonToolbar,
@@ -175,6 +174,15 @@ const setOpen = (state: boolean) => (isOpenRef.value = state);
 function reloadPage() {
   // router.push('/tabs/searchrecipe');
   location.reload();
+}
+function getDateString(createdAt:Date):string{
+  console.log(createdAt)
+ /*  const shortDate =createdAt.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "short",
+    day: "numeric"
+  }); */
+  return "";
 }
 
 recipe_id.value = parseInt(route.params.id.toString());
