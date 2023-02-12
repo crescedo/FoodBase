@@ -118,7 +118,9 @@ public class FoodbaseApplication implements CommandLineRunner {
 		userInfo.setFirstName("Gianni");
 		userInfo.setLastName("Rivera");
 		Image im = new Image();
-		im.setUrl("https://source.unsplash.com/random/200x200?sig=" + random.nextInt(10) + 1);
+
+		im.setUrl("https://i.stack.imgur.com/l60Hf.png");
+
 		userInfo.setProfilePic(im);
 		userOne.setUserInfo(userInfo);
 		LoginInfo login = new LoginInfo();
@@ -140,7 +142,8 @@ public class FoodbaseApplication implements CommandLineRunner {
 		userTwoInfo.setFirstName("Giampiero");
 		userTwoInfo.setLastName("Mughini");
 		Image imTwo = new Image();
-		imTwo.setUrl("https://source.unsplash.com/random/200x200?sig=" + random.nextInt(10) + 1);
+
+		imTwo.setUrl("https://i.stack.imgur.com/l60Hf.png");
 		userTwoInfo.setProfilePic(imTwo);
 		userTwo.setUserInfo(userTwoInfo);
 		LoginInfo loginTwo = new LoginInfo();
@@ -193,11 +196,14 @@ public class FoodbaseApplication implements CommandLineRunner {
 				Duration.ofHours(3).plusMinutes(30));
 		recipeRepository.save(kürbisBrot);
 
-		// Kürbissuppe
+
+	//Kürbissuppe
+
 		String kürbisSuppeTitle = "Kürbissuppe";
 		String kürbisSuppeDescription = "Für den kühlen Herbst oder Winter.";
 		String kürbisSuppeFirstStepTitle = "Kürbis dünsten";
 		String kürbisSuppefirstStepContent = "Zwiebel und Curry in Butter andünsten. Kürbis, Rüebli und Kartoffel dazugeben, mitdünsten. Bouillon beifügen, aufkochen, würzen. Zugedeckt 20-25 Minuten köcheln.";
+
 
 		List<Image> kSimages = Arrays.asList(
 				Builder.createImage(
@@ -226,6 +232,7 @@ public class FoodbaseApplication implements CommandLineRunner {
 		recipeRepository.save(kürbisSuppe);
 
 		// Valentinsdessert
+
 		String vdTitle = "Valentinsdessert";
 		String vdDescription = "Zuckersüss und nur für die Liebsten.";
 		String vdFirstStepTitle = "Biscuit";
@@ -292,6 +299,7 @@ public class FoodbaseApplication implements CommandLineRunner {
 		String bbTitle = "Bierbrot";
 		String bbDescription = "Klingt gut für den Feierabend?";
 		String bbFirstStepTitle = "Teig";
+
 		String bbFirstStepContent = "Mehle, Backpulver und Salz in einer Schüssel mischen. Bier und Joghurt dazugiessen, mit einer Kelle gut mischen, bis ein flüssiger, weicher Teig entsteht. Eine zweite Schüssel mit einem rund zugeschnittenen Backpapier (ca. 30 cm Ø) auslegen, Teig daraufgeben.Lachs vierteln, mit 4 EL Marinade bestreichen, zugedeckt im Kühlschrank ca. 30 Min. marinieren. Restliche Marinade beiseite stellen.";
 
 		List<Image> bbimages = Arrays.asList(
@@ -516,5 +524,6 @@ public class FoodbaseApplication implements CommandLineRunner {
 		 ); 
 		 Recipe GriechischerSalat=Builder.createRecipe(userOne, categoryRepository.findById(1L).get(), jesteps, jeingredients, jeTitle, jeDescription, 8, 3, Builder.createImage("https://www.bettybossi.ch/static/rezepte/x/bb_bbzg980815_0008d_x.jpg"), Duration.ofHours(0).plusMinutes(45));
 		 recipeRepository.save(GriechischerSalat);
+
 	}
 }
