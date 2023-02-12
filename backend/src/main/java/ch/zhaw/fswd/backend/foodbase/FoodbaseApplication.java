@@ -196,21 +196,31 @@ public class FoodbaseApplication implements CommandLineRunner {
 				Duration.ofHours(3).plusMinutes(30));
 		recipeRepository.save(kürbisBrot);
 
-
-	//Kürbissuppe
+		// Kürbissuppe
 
 		String kürbisSuppeTitle = "Kürbissuppe";
 		String kürbisSuppeDescription = "Für den kühlen Herbst oder Winter.";
-		String kürbisSuppeFirstStepTitle = "Kürbis dünsten";
-		String kürbisSuppefirstStepContent = "Zwiebel und Curry in Butter andünsten. Kürbis, Rüebli und Kartoffel dazugeben, mitdünsten. Bouillon beifügen, aufkochen, würzen. Zugedeckt 20-25 Minuten köcheln.";
+		String kürbisSuppeFirstStepTitle1 = "Zutaten Vorbereiten";
+		String kürbisSuppefirstStepContent1 = "Alle Gemüse in Würfeln schneiden";
+		String kürbisSuppeFirstStepTitle2 = "Anbraten";
+		String kürbisSuppefirstStepContent2 = "Die Gemüsewürfeln mit ein wenig Öl in einer Pfanne geben und anbraten";
+		String kürbisSuppeFirstStepTitle3 = "Köcheln";
+		String kürbisSuppefirstStepContent3 = "Alles mit Wasser begiessen und zugedeckt 20-25 Minuten köcheln.";
 
-
-		List<Image> kSimages = Arrays.asList(
+		List<Image> kSimages1 = Arrays.asList(
 				Builder.createImage(
-						"https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.gutekueche.de%2Feinfaches-kuerbisgemuese-rezept-14577&psig=AOvVaw0vM8qaW8vrnZUaPQXJNGf7&ust=1676297937629000&source=images&cd=vfe&ved=0CBAQjRxqFwoTCIjh6MmWkP0CFQAAAAAdAAAAABAE"));
+						"https://previews.123rf.com/images/dompr/dompr1211/dompr121100012/16552127-schneiden-von-verschiedenen-gem%C3%BCse-in-w%C3%BCrfel-auf-einem-teller-nahaufnahme.jpg"));
+		List<Image> kSimages2 = Arrays.asList(
+				Builder.createImage(
+						"https://www.ostmann.de/wp-content/uploads/sites/2/2017/09/gemuese-anbraten.jpg"));
+		List<Image> kSimages3 = Arrays.asList(
+				Builder.createImage(
+						"https://abnehmtricks-und-abnehmtipps.de/wp-content/uploads/2017/08/Rahmspinat-Suppe-2.jpg"));
 
 		List<Step> kSsteps = Arrays.asList(
-				Builder.createStep(kürbisSuppeFirstStepTitle, kürbisSuppefirstStepContent, kSimages, 1));
+				Builder.createStep(kürbisSuppeFirstStepTitle1, kürbisSuppefirstStepContent1, kSimages1, 1),
+				Builder.createStep(kürbisSuppeFirstStepTitle2, kürbisSuppefirstStepContent2, kSimages2, 2),
+				Builder.createStep(kürbisSuppeFirstStepTitle3, kürbisSuppefirstStepContent3, kSimages3, 3));
 
 		List<IngredientQuantity> kSingredients = Arrays.asList(
 				Builder.createIngredientQuantitiy(ingredientRepository.findById(7L).get(),
@@ -428,7 +438,7 @@ public class FoodbaseApplication implements CommandLineRunner {
 				Duration.ofHours(1).plusMinutes(10));
 		recipeRepository.save(Fasnachtschuechli);
 
-		//Lachs auf Frühlingssalat
+		// Lachs auf Frühlingssalat
 		String jcTitle = "Lachs auf Frühlingssalat";
 		String jcDescription = "Leicht und gesund";
 		String jcFirstStepTitle = "Lachs anbraten";
@@ -497,7 +507,7 @@ public class FoodbaseApplication implements CommandLineRunner {
 						measureRepository.findById(3L).get(), 125D),
 				Builder.createIngredientQuantitiy(ingredientRepository.findById(38L).get(),
 						measureRepository.findById(7L).get(), 3D),
-						Builder.createIngredientQuantitiy(ingredientRepository.findById(40L).get(),
+				Builder.createIngredientQuantitiy(ingredientRepository.findById(40L).get(),
 						measureRepository.findById(3L).get(), 200D));
 		Recipe HimCheescake = Builder.createRecipe(userOne, categoryRepository.findById(1L).get(), hcsteps,
 				hcingredients, hcTitle, hcDescription, 12, 3,
@@ -505,25 +515,30 @@ public class FoodbaseApplication implements CommandLineRunner {
 				Duration.ofHours(2).plusMinutes(30));
 		recipeRepository.save(HimCheescake);
 
-		//GriechischerSalat 
+		// GriechischerSalat
 		String jeTitle = "Griechischer Salat";
-		 String jeDescription = "Vitamine en masse mit köstlichem Feta.";
-		 String jeFirstStepTitle = "Salat";
-		 String jeFirstStepContent = "Essig und Öl in einer Schüssel verrühren. Knoblauch dazupressen, Kräuter fein schneiden, beigeben, würzen.Peperoni entkernen, in Streifen, Tomaten in Schnitze schneiden, beigeben. Gurke schälen, entkernen, in Würfeli, Zwiebeln schälen, in Ringe schneiden, mit den Oliven daruntermischen. Feta in Würfel schneiden, darüberstreuen, würzen.";
-		 List<Image> jeimages = Arrays.asList(
-		 Builder.createImage("https://herdsport.de/wp-content/uploads/2021/05/griechischer-Bauernsalat-930x620.jpg.webp")
-		 );
-		 List<Step> jesteps = Arrays.asList(
-		 Builder.createStep(jeFirstStepTitle, jeFirstStepContent,jeimages,1)
-		 );
-		 List<IngredientQuantity> jeingredients = Arrays.asList(
-		 Builder.createIngredientQuantitiy(ingredientRepository.findById(35L).get(), measureRepository.findById(3L).get(), 200D),
-		 Builder.createIngredientQuantitiy(ingredientRepository.findById(36L).get(), measureRepository.findById(3L).get(), 400D),
-		 Builder.createIngredientQuantitiy(ingredientRepository.findById(34L).get(), measureRepository.findById(7L).get(), 1D),
-		 Builder.createIngredientQuantitiy(ingredientRepository.findById(33L).get(), measureRepository.findById(3L).get(), 300D)
-		 ); 
-		 Recipe GriechischerSalat=Builder.createRecipe(userOne, categoryRepository.findById(1L).get(), jesteps, jeingredients, jeTitle, jeDescription, 8, 3, Builder.createImage("https://www.bettybossi.ch/static/rezepte/x/bb_bbzg980815_0008d_x.jpg"), Duration.ofHours(0).plusMinutes(45));
-		 recipeRepository.save(GriechischerSalat);
+		String jeDescription = "Vitamine en masse mit köstlichem Feta.";
+		String jeFirstStepTitle = "Salat";
+		String jeFirstStepContent = "Essig und Öl in einer Schüssel verrühren. Knoblauch dazupressen, Kräuter fein schneiden, beigeben, würzen.Peperoni entkernen, in Streifen, Tomaten in Schnitze schneiden, beigeben. Gurke schälen, entkernen, in Würfeli, Zwiebeln schälen, in Ringe schneiden, mit den Oliven daruntermischen. Feta in Würfel schneiden, darüberstreuen, würzen.";
+		List<Image> jeimages = Arrays.asList(
+				Builder.createImage(
+						"https://herdsport.de/wp-content/uploads/2021/05/griechischer-Bauernsalat-930x620.jpg.webp"));
+		List<Step> jesteps = Arrays.asList(
+				Builder.createStep(jeFirstStepTitle, jeFirstStepContent, jeimages, 1));
+		List<IngredientQuantity> jeingredients = Arrays.asList(
+				Builder.createIngredientQuantitiy(ingredientRepository.findById(35L).get(),
+						measureRepository.findById(3L).get(), 200D),
+				Builder.createIngredientQuantitiy(ingredientRepository.findById(36L).get(),
+						measureRepository.findById(3L).get(), 400D),
+				Builder.createIngredientQuantitiy(ingredientRepository.findById(34L).get(),
+						measureRepository.findById(7L).get(), 1D),
+				Builder.createIngredientQuantitiy(ingredientRepository.findById(33L).get(),
+						measureRepository.findById(3L).get(), 300D));
+		Recipe GriechischerSalat = Builder.createRecipe(userOne, categoryRepository.findById(1L).get(), jesteps,
+				jeingredients, jeTitle, jeDescription, 8, 3,
+				Builder.createImage("https://www.bettybossi.ch/static/rezepte/x/bb_bbzg980815_0008d_x.jpg"),
+				Duration.ofHours(0).plusMinutes(45));
+		recipeRepository.save(GriechischerSalat);
 
 	}
 }

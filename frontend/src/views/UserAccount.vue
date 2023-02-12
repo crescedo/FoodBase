@@ -63,7 +63,7 @@
         <ion-card-header>
           <ion-card-title>
 
-            Danger zone
+            Einstellungen ändern
           </ion-card-title>
         </ion-card-header>
         <ion-card-content>

@@ -7,7 +7,6 @@
         </ion-buttons>
         <ion-title>
           Rezept: {{ recipe.title }}
-
         </ion-title>
       </ion-toolbar>
     </ion-header>
