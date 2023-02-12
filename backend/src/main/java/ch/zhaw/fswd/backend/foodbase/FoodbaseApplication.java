@@ -3,6 +3,7 @@ package ch.zhaw.fswd.backend.foodbase;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -19,6 +20,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import Util.Builder;
 import Util.FullResponseBuilder;
 
 import ch.zhaw.fswd.backend.foodbase.controller.RecipeController;
@@ -251,6 +253,29 @@ public class FoodbaseApplication implements CommandLineRunner {
 			newRecipe.setThumbnailUrl(thumbnail);
 			recipeRepository.save(newRecipe);
 		}
+		String kürbisBrotTitle = "Kürbisbrot à la Mama";
+		String kürbisBrotDescription = "Leckeres und gesundes Brot für Zwischendurch";
+		String kürbisBrotFirstStepTitle = "Teig";
+		String kürbisBrotfirstStepContent = "Kürbis mit der Röstiraffel in die Schüssel der Küchenmaschine reiben (ergibt ca. 200 g), 2 EL davon beiseitestellen. Mehl, Salz, Leinsamen, Kürbiskerne und Hefe beigeben, mischen. Wasser dazugiessen, mit dem Knethacken zu einem weichen, glatten Teig kneten. Zugedeckt bei Raumtemperatur ca. 2 Std. aufgehen lassen.";
+		
+		List<Image> images =  Arrays.asList(
+			Builder.createImage("https://www.gourmetgeeks.de/wp-content/uploads/2015/10/kuerbisbrot-11.jpg")
+			);
+		
+		List<Step> steps =  Arrays.asList(
+			Builder.createStep(kürbisBrotFirstStepTitle,  kürbisBrotfirstStepContent,images,1)
+			);
+	
+		List<IngredientQuantity> ingredients =  Arrays.asList(
+			Builder.createIngredientQuantitiy(ingredientRepository.findById(15L).get(), measureRepository.findById(3L).get(), 400D),
+			Builder.createIngredientQuantitiy(ingredientRepository.findById(16L).get(), measureRepository.findById(3L).get(), 300D),
+			Builder.createIngredientQuantitiy(ingredientRepository.findById(18L).get(), measureRepository.findById(3L).get(), 50D),
+			Builder.createIngredientQuantitiy(ingredientRepository.findById(19L).get(), measureRepository.findById(3L).get(),50D),
+			Builder.createIngredientQuantitiy(ingredientRepository.findById(20L).get(), measureRepository.findById(2L).get(), 1.5D)
+			);
+
+		Recipe kürbisBrot =Builder.createRecipe(userOne, categoryRepository.findById(2L).get(), steps, ingredients, kürbisBrotTitle, kürbisBrotDescription, 1, 1, Builder.createImage("https://www.eatbetter.de/sites/eatbetter.de/files/styles/full_width_tablet_4_3/public/2020-09/kuerbisbrot_1.jpg?h=4521fff0&itok=DP5-5sqK"), Duration.ofHours(3).plusMinutes(30));	
+		recipeRepository.save(kürbisBrot);
 //userController.updateFavorites(recipeRepository.findById(1L).get(), "user");
 		List<Recipe> recipes = recipeController.findAllRecipesByTitle("Curry Bean");
 		/*
