@@ -23,6 +23,8 @@ import java.security.Principal;
 import java.util.List;
 import java.util.Optional;
 
+import javax.websocket.server.PathParam;
+
 @RestController
 @CrossOrigin
 public class UserEndPoint {
@@ -68,6 +70,18 @@ public class UserEndPoint {
     @PreAuthorize("isAuthenticated() AND hasRole('USER')")
     public void updateFavorites(@RequestBody Recipe recipe, Principal principal) {
         userController.updateFavorites(recipe, principal.getName());
+    }
+
+    @RequestMapping(path = "/api/users/favorites", method = RequestMethod.GET)
+    @PreAuthorize("isAuthenticated() AND hasRole('USER')")
+    public List<Recipe> getFavorites( Principal principal) {
+        return userController.getFavorites(principal.getName());
+    }
+    @RequestMapping(path="/api/users/favorites",method=RequestMethod.DELETE)
+    @PreAuthorize("isAuthenticated() AND hasRole('USER')")
+    public void removeFromFavorite(@PathParam("recipeId")Long recipeId,Principal principal){
+
+        userController.removeFavorite(recipeId,principal.getName());
     }
 
 }

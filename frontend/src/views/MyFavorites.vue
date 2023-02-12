@@ -28,7 +28,7 @@
           </ion-col>
         </ion-row>
       </ion-grid>
-      <ion-card v-for="recipe in recipes" :key="recipe.id">
+      <ion-card v-for="recipe in myFavorites" :key="recipe.id">
         <ion-img> {{ recipe.thumbnailUrl?.url }} </ion-img>
         <ion-card-header>
           <ion-card-title>
@@ -64,7 +64,7 @@
 import { heart, time, barbell, filter } from "ionicons/icons";
 import { defineComponent } from "vue";
 import { searchCircle } from "ionicons/icons";
-
+import { useUser } from "@/composables/useUser";
 import {
   IonIcon,
   IonSearchbar,
@@ -89,7 +89,9 @@ import {
 } from "@ionic/vue";
 import { useRecipes } from "../composables/useRecipes";
 
-const { recipes, getRecipes } = useRecipes();
+
+const {myFavorites,onMounted}=useUser();
+//const { recipes, getRecipes } = useRecipes();
 const filterPath = "/tabs/filterrecipe";
 
 const viewRecipe = "/tabs/recipeDetail";

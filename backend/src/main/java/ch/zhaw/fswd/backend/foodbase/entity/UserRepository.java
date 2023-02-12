@@ -13,4 +13,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     @Query("SELECT f.id from User u JOIN u.favorites AS f WHERE u.id=?1 ")
     List<Long> getFavoritesById(Long id);
+
+    @Query("SELECT u.favorites FROM User as u WHERE u.id=?1")
+    List<Recipe> getFavoritesByUserId(Long id);
 }
